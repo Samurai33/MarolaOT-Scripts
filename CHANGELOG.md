@@ -13,12 +13,24 @@ Todas as mudanças relevantes serão documentadas neste arquivo.
 - Validação básica de JSON e schema do AttackBot.
 - Workflows para PowerShell e JSON.
 - Catálogo central de hunts e quests.
-- Padrão de diretórios e critérios de aceite para hunts.
+- Modelo de maturidade M0–M7.
+- Blocos de prioridade P0–P5.
+- Registro auditável de fontes oficiais e comunitárias.
+- Schema JSON do manifesto de origem.
+- Template de manifesto para novos pacotes.
+- Manifesto M6 da Cobra Tower.
+- Pacote documental inicial da Cobra Tower para consolidação M7.
+- Manifesto M1 e documentação de pesquisa de Werehyaenas.
 - Padrão seguro de automação assistida para quests.
-- Pacote inicial da hunt Summer Court para MS 500+.
-- Pacote inicial da Dream Courts Access.
-- Issue de roadmap para o primeiro lote de hunts e quests.
 
 ### Changed
 
-- README atualizado para destacar hunts, quests e o catálogo de desenvolvimento.
+- README reconstruído com badges reais de CI, navegação, matriz de maturidade, Mermaid, segurança, compatibilidade e roadmap por prioridades.
+- Catálogo atualizado para distinguir ideia, referência, adaptação, teste e release.
+- Summer Court reclassificada como pesquisa M0/M1, sem rota executável ou status inflado.
+- Expansão de hunts passou a exigir evidência, commit, licença e componentes mínimos.
+
+### Security
+
+- Redistribuição de conteúdo comunitário passou a depender de auditoria de licença.
+- Novos pacotes exigem backup, rollback, módulos desligados e proibição de segredos no manifesto.
