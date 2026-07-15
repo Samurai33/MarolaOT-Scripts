@@ -3,19 +3,42 @@ param()
 
 $ErrorActionPreference = 'Stop'
 
+function Get-PropertyText {
+    param(
+        [Parameter(Mandatory = $false)]
+        [object]$Object,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]$Names
+    )
+
+    if ($null -eq $Object) {
+        return ''
+    }
+
+    foreach ($name in $Names) {
+        $property = $Object.PSObject.Properties[$name]
+        if ($null -ne $property -and $null -ne $property.Value) {
+            return [string]$property.Value
+        }
+    }
+
+    return ''
+}
+
 try {
     $raw = [Console]::In.ReadToEnd()
     if ([string]::IsNullOrWhiteSpace($raw)) { exit 0 }
-    $inputObject = $raw | ConvertFrom-Json -Depth 50
+    $inputObject = $raw | ConvertFrom-Json
 } catch {
     Write-Error "Claude hook input is not valid JSON: $($_.Exception.Message)"
     exit 2
 }
 
-$toolName = [string]$inputObject.tool_name
+$toolName = Get-PropertyText -Object $inputObject -Names @('tool_name')
 $toolInput = $inputObject.tool_input
-$command = [string]($toolInput.command ?? '')
-$filePath = [string]($toolInput.file_path ?? $toolInput.path ?? '')
+$command = Get-PropertyText -Object $toolInput -Names @('command')
+$filePath = Get-PropertyText -Object $toolInput -Names @('file_path', 'path')
 
 $blockedCommandPatterns = @(
     '(?i)\bgit\s+push\s+(-f|--force|--force-with-lease)\b',
