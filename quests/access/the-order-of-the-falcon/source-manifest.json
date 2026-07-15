@@ -104,8 +104,8 @@
     },
     {
       "name": "quest-safety-gate",
-      "status": "pending",
-      "evidence": "validation/test_order_of_the_falcon_research.py"
+      "status": "passed",
+      "evidence": "GitHub Actions: Order of the Falcon Research run 2"
     }
   ],
   "safety": {
