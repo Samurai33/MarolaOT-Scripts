@@ -1,0 +1,101 @@
+name: Nova referência de hunt ou quest
+description: Registrar uma fonte verificável antes de iniciar adaptação
+title: "[reference]: "
+labels:
+  - type/research
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este formulário para registrar uma fonte pública ou captura própria.
+        Não inclua credenciais, dados pessoais, dumps, arquivos privados ou conteúdo sem permissão.
+
+  - type: input
+    id: package
+    attributes:
+      label: Hunt, quest ou pacote
+      placeholder: "Werehyaenas MS 300+"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: package_type
+    attributes:
+      label: Tipo
+      options:
+        - Hunt
+        - Quest
+        - Acesso
+        - Utilitário
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: URL da fonte
+      placeholder: "https://github.com/owner/repository"
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Commit, tag ou versão
+      description: Prefira um SHA completo. Informe “não disponível” somente quando a fonte não utilizar Git.
+      placeholder: "52e6baaa1a32448abe88476fca53dcd466d7678e"
+    validations:
+      required: true
+
+  - type: textarea
+    id: source_paths
+    attributes:
+      label: Arquivos ou caminhos relevantes
+      description: Liste CaveBot, TargetBot, configs, scripts auxiliares e documentação encontrados.
+      placeholder: |
+        - path/to/cavebot.cfg
+        - path/to/targetbot.json
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: Licença observada
+      placeholder: "MIT, GPL-3.0, não especificada..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: components
+    attributes:
+      label: Componentes encontrados
+      options:
+        - label: CaveBot ou rota completa
+        - label: TargetBot ou lista verificável de monstros
+        - label: AttackBot ou rotação ofensiva
+        - label: HealBot
+        - label: Supplies
+        - label: Refill/NPCs
+        - label: Dependências auxiliares
+        - label: Rollback ou instalador
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências e observações
+      description: Explique o que foi confirmado e o que continua ausente.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Confirmações
+      options:
+        - label: A fonte é pública ou tenho permissão para referenciá-la.
+          required: true
+        - label: Não incluí credenciais, tokens, IPs privados ou dados pessoais.
+          required: true
+        - label: Não estou marcando como completa uma referência parcial.
+          required: true
