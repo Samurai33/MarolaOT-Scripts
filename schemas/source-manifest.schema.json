@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Samurai33/MarolaOT-Scripts/schemas/source-manifest.schema.json",
+  "title": "MarolaOT Source Manifest",
+  "description": "Manifesto rastreável para pacotes de hunt, quest e automação.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "package",
+    "target",
+    "maturity",
+    "sources",
+    "components",
+    "safety"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "slug", "type", "status"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "type": { "enum": ["hunt", "quest", "access", "utility"] },
+        "status": {
+          "enum": [
+            "idea",
+            "reference-found",
+            "reference-audited",
+            "adapted",
+            "local-tested",
+            "route-tested",
+            "validated",
+            "released"
+          ]
+        },
+        "vocation": { "type": ["string", "null"] },
+        "levelRange": { "type": ["string", "null"] }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["client", "bot", "platform"],
+      "properties": {
+        "client": { "type": "string", "minLength": 1 },
+        "bot": { "type": "string", "minLength": 1 },
+        "platform": { "type": "string", "minLength": 1 },
+        "server": { "type": ["string", "null"] }
+      }
+    },
+    "maturity": {
+      "type": "string",
+      "pattern": "^M[0-7]$"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "url", "role", "license", "redistribution"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "role": { "enum": ["upstream", "community-pack", "documentation", "game-data", "original-capture"] },
+          "commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{7,40}$" },
+          "paths": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "license": { "type": "string", "minLength": 1 },
+          "redistribution": { "enum": ["allowed", "restricted", "unknown", "reference-only"] },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cavebot", "targetbot", "attackbot", "healbot", "supplies", "refill", "rollback"],
+      "properties": {
+        "cavebot": { "$ref": "#/$defs/componentState" },
+        "targetbot": { "$ref": "#/$defs/componentState" },
+        "attackbot": { "$ref": "#/$defs/componentState" },
+        "healbot": { "$ref": "#/$defs/componentState" },
+        "supplies": { "$ref": "#/$defs/componentState" },
+        "refill": { "$ref": "#/$defs/componentState" },
+        "rollback": { "$ref": "#/$defs/componentState" }
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["pending", "passed", "failed", "not-applicable"] },
+          "evidence": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backupRequired", "rollbackRequired", "modulesOffAfterInstall", "secretsProhibited"],
+      "properties": {
+        "backupRequired": { "const": true },
+        "rollbackRequired": { "const": true },
+        "modulesOffAfterInstall": { "const": true },
+        "secretsProhibited": { "const": true },
+        "manualCheckpoints": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "componentState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["missing", "referenced", "adapted", "tested", "validated"] },
+        "path": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
