@@ -5,14 +5,14 @@
 
   **Automação, diagnóstico e manutenção segura para o ecossistema MarolaOT.**
 
-  Scripts reproduzíveis para vBot 4.8, OTClient, Canary e rotinas administrativas do servidor.
+  Scripts reproduzíveis para vBot 4.8, OTClient, Canary, hunts, quests e rotinas administrativas do servidor.
 </div>
 
 ## Visão geral
 
 Este repositório centraliza scripts utilizados no MarolaOT com foco em segurança operacional, backup automático, validação antes e depois das alterações e possibilidade de rollback.
 
-O primeiro pacote publicado prepara a hunt **MS Cobra Tower MAX DPS v2** para vBot 4.8, incluindo:
+O primeiro pacote validado prepara a hunt **MS Cobra Tower MAX DPS v2** para vBot 4.8, incluindo:
 
 - rotação de ataque com cooldowns alinhados ao servidor;
 - Rage of the Skies, Energy Wave, Great Fire Wave, GFB, Ultimate Energy Strike e SD;
@@ -22,6 +22,30 @@ O primeiro pacote publicado prepara a hunt **MS Cobra Tower MAX DPS v2** para vB
 - backup completo e validações automáticas;
 - módulos mantidos desligados após a instalação.
 
+## Catálogo de hunts e quests
+
+O desenvolvimento agora é organizado pelo [catálogo central](docs/CATALOG.md).
+
+### Próximas hunts
+
+- Summer Court — MS 500+;
+- Asura Mirror — MS 450+;
+- Winter Court — MS 500+;
+- Falcon Bastion — MS 500+;
+- Issavi Sphinx/Lamassu — MS 450+;
+- Werehyaenas — MS 300+.
+
+### Próximas quests e acessos
+
+- Dream Courts Access;
+- Cobra Bastion Access;
+- Falcon Bastion Access;
+- Kilmaresh Access;
+- Secret Library Access;
+- Grave Danger.
+
+O acompanhamento do primeiro lote está na [issue #1](https://github.com/Samurai33/MarolaOT-Scripts/issues/1).
+
 ## Estrutura
 
 ```text
@@ -29,7 +53,9 @@ MarolaOT-Scripts/
 ├── .github/                    # CI, templates de issue e PR
 ├── assets/                     # Identidade visual
 ├── configs/vbot-4.8/examples/  # Exemplos de estrutura JSON
-├── docs/                       # Documentação operacional
+├── docs/                       # Documentação e catálogo
+├── hunts/                      # Pacotes versionados de hunts
+├── quests/                     # Quests, acessos e checklists
 ├── scripts/
 │   ├── server/                 # Futuras rotinas Canary/Linux
 │   └── windows/vbot/           # Automação do cliente/vBot
@@ -39,6 +65,16 @@ MarolaOT-Scripts/
 ├── SECURITY.md
 └── README.md
 ```
+
+## Pacotes em desenvolvimento
+
+### `hunts/ms/500-699/summer-court`
+
+Estrutura inicial da próxima hunt para Master Sorcerer, com foco em rota solo agressiva, waves, GFB, lootbag e refill seguro.
+
+### `quests/access/dream-courts`
+
+Estrutura inicial do acesso à Dream Courts, com checkpoints manuais antes de entregas, escolhas, teleportes de risco e bosses.
 
 ## Scripts disponíveis
 
@@ -98,6 +134,7 @@ Outro perfil pode ser informado explicitamente:
 - CaveBot, TargetBot, HealBot e AttackBot permanecem desligados ao final.
 - Não versione senhas, tokens, dados de contas ou dumps do banco.
 - Faça o primeiro teste fora de PZ com personagem GM e monstros criados localmente.
+- Quests devem parar antes de escolhas irreversíveis, bosses ou consumo de itens raros.
 
 ## Teste local recomendado
 
@@ -114,11 +151,15 @@ Ative somente o AttackBot e o TargetBot durante o teste. O CaveBot deve permanec
 
 ## Roadmap
 
+- [x] Criar catálogo de hunts e quests.
+- [x] Definir padrão de pacotes de hunt.
+- [x] Definir padrão seguro para quests.
+- [ ] Finalizar Summer Court para MS 500+.
+- [ ] Finalizar Dream Courts Access.
 - [ ] Publicar perfis adicionais por vocação e faixa de level.
-- [ ] Adicionar sincronização segura entre servidor e cliente.
 - [ ] Criar testes automáticos de schema para CaveBot e TargetBot.
 - [ ] Adicionar scripts Canary para contas, personagens e manutenção.
-- [ ] Criar sistema de releases versionadas para pacotes de hunt.
+- [ ] Criar releases versionadas para pacotes de hunt e quest.
 
 ## Licença
 
