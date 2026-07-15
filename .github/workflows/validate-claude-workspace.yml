@@ -1,0 +1,57 @@
+name: Validate Claude Workspace
+
+on:
+  push:
+    paths:
+      - "CLAUDE.md"
+      - ".claude/**"
+      - "docs/claude/**"
+      - ".github/workflows/validate-claude-workspace.yml"
+  pull_request:
+    paths:
+      - "CLAUDE.md"
+      - ".claude/**"
+      - "docs/claude/**"
+      - ".github/workflows/validate-claude-workspace.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Claude Code configuration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate workspace
+        run: python .claude/validation/validate_claude_workspace.py
+
+      - name: Parse JSON files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          paths = [
+              Path(".claude/settings.json"),
+              Path(".claude/settings.hooks.example.json"),
+              Path(".claude/token-budget.json"),
+          ]
+          for path in paths:
+              with path.open(encoding="utf-8") as handle:
+                  json.load(handle)
+              print(f"VALID: {path}")
+          PY
+
+      - name: Check whitespace
+        run: git diff --check HEAD^ HEAD || git diff --check
