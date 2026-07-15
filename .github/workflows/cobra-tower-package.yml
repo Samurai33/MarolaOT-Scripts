@@ -1,0 +1,33 @@
+name: Cobra Tower Package
+
+on:
+  push:
+    paths:
+      - 'hunts/ms/500-699/cobra-tower/**'
+      - '.github/workflows/cobra-tower-package.yml'
+  pull_request:
+    paths:
+      - 'hunts/ms/500-699/cobra-tower/**'
+      - '.github/workflows/cobra-tower-package.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Cobra Tower RC
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Validate structure and PowerShell
+        shell: pwsh
+        run: ./hunts/ms/500-699/cobra-tower/tests/Test-CobraTowerPackage.ps1 -SkipChecksums
+
+      - name: Validate package checksums
+        shell: pwsh
+        run: ./hunts/ms/500-699/cobra-tower/tests/Test-CobraTowerPackage.ps1

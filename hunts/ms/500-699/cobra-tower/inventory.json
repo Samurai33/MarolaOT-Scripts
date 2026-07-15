@@ -1,0 +1,43 @@
+{
+  "package": "cobra-tower-max-dps-v2",
+  "version": "1.0.0-rc.1",
+  "installedFiles": [
+    {
+      "role": "attackbot",
+      "relativePath": "vBot_configs/profile_1/AttackBot.json",
+      "operation": "merge-profile-1"
+    },
+    {
+      "role": "healbot",
+      "relativePath": "vBot_configs/profile_1/HealBot.json",
+      "operation": "merge-profile-1"
+    },
+    {
+      "role": "supplies",
+      "relativePath": "vBot_configs/profile_1/Supplies.json",
+      "operation": "add-named-profile"
+    },
+    {
+      "role": "storage",
+      "relativePath": "storage/profile_1.json",
+      "operation": "select-and-disable"
+    },
+    {
+      "role": "targetbot",
+      "relativePath": "targetbot_configs/cobra.json",
+      "operation": "import-transform"
+    },
+    {
+      "role": "cavebot",
+      "relativePath": "cavebot_configs/[550+] Cobra Tower.cfg",
+      "operation": "import-patch"
+    },
+    {
+      "role": "cavebot-dry-run",
+      "relativePath": "cavebot_configs/[550+] Cobra Tower DRY RUN.cfg",
+      "operation": "derived-safe-stop"
+    }
+  ],
+  "backupRoot": "marolaot-scripts-backups/cobra-tower",
+  "modulesOffAfterInstall": true
+}

@@ -27,13 +27,13 @@
       ],
       "license": "not-confirmed",
       "redistribution": "reference-only",
-      "notes": "Fonte comunitária usada como referência. Arquivos integrais não são republicados até a licença ser esclarecida."
+      "notes": "Original files are not committed. The installer imports the pinned files and validates their Git blob SHA-1 values."
     },
     {
       "name": "OTCv8/otclientv8",
       "url": "https://github.com/OTCv8/otclientv8",
       "role": "upstream",
-      "commit": null,
+      "commit": "aacfe3f1fe4bcadb5a34ff1f36263e1c96b3dd32",
       "paths": [
         "modules/game_bot/default_configs/vBot_4.8/cavebot",
         "modules/game_bot/default_configs/vBot_4.8/targetbot",
@@ -41,69 +41,86 @@
       ],
       "license": "MIT",
       "redistribution": "allowed",
-      "notes": "Upstream estrutural do vBot 4.8. Fixar commit antes da release M7."
+      "notes": "Pinned technical upstream for the OTClient/vBot structures used by the package."
     }
   ],
   "components": {
     "cavebot": {
       "status": "validated",
-      "path": null,
-      "notes": "Rota adaptada no ambiente local; será empacotada no P1."
+      "path": "hunts/ms/500-699/cobra-tower/install/Install-CobraTower.ps1",
+      "notes": "Pinned route imported at install time, NPC typo patched, markers validated and dry-run generated."
     },
     "targetbot": {
       "status": "validated",
-      "path": null,
-      "notes": "Cobras configuradas com lure e looting interno desligado."
+      "path": "hunts/ms/500-699/cobra-tower/install/Install-CobraTower.ps1",
+      "notes": "Pinned TargetBot imported at install time, lure raised to six and internal looting disabled."
     },
     "attackbot": {
       "status": "validated",
-      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
-      "notes": "Rotação MAX DPS v2 com cooldowns locais alinhados."
+      "path": "hunts/ms/500-699/cobra-tower/configs/attack-profile.json",
+      "notes": "Six-step MAX DPS rotation with server-aligned local cooldowns."
     },
     "healbot": {
       "status": "validated",
-      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
-      "notes": "Perfil de cura e mana instalado desligado."
+      "path": "hunts/ms/500-699/cobra-tower/configs/heal-profile.json",
+      "notes": "Named healing and mana profile installed disabled."
     },
     "supplies": {
       "status": "validated",
-      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
-      "notes": "UMP, GFB e SD configurados."
+      "path": "hunts/ms/500-699/cobra-tower/configs/supplies-profile.json",
+      "notes": "UMP, GFB and SD named profile."
     },
     "refill": {
       "status": "validated",
-      "path": null,
-      "notes": "Mehkesh e Fenech identificados e integrados na rota adaptada."
+      "path": "hunts/ms/500-699/cobra-tower/docs/UPSTREAM_DIFF.md",
+      "notes": "Mehkesh and Fenech are validated as the main supply NPCs; the route also includes banking, selling and travel actions."
     },
     "rollback": {
       "status": "adapted",
-      "path": "scripts/windows/vbot/Restore-VBotCoreConfigs.ps1",
-      "notes": "Restauração disponível; empacotamento específico da hunt é pendência do P1."
+      "path": "hunts/ms/500-699/cobra-tower/rollback/Restore-CobraTower.ps1",
+      "notes": "Package-specific rollback is implemented and awaits clean-environment validation."
     }
   },
   "changes": [
-    "Correção do nome Menkesh para Mehkesh.",
-    "Separação de AttackBot, HealBot e Supplies no schema local.",
-    "Looting interno desligado para uso do lootbag do servidor.",
-    "Rotação ofensiva expandida com UE, waves, GFB, strikes e SD.",
-    "Todos os módulos permanecem desligados após a instalação.",
-    "Backup e validações adicionados ao instalador."
+    "Community sources are imported from a pinned commit instead of being redistributed.",
+    "Git blob SHA-1 validation protects the source import.",
+    "Menkesh is corrected to Mehkesh.",
+    "A dry-run route is generated with CaveBot and TargetBot stopped before automatic hunting.",
+    "AttackBot, HealBot and Supplies are separated into named package profiles.",
+    "TargetBot lure count is set to six and internal looting is disabled.",
+    "A package-specific backup manifest, install report and rollback are included.",
+    "All modules remain disabled after installation and restoration."
   ],
   "tests": [
     {
       "name": "json-load",
       "status": "passed",
-      "evidence": "Cliente abriu com AttackBot, HealBot e Supplies juntos."
+      "evidence": "The MarolaOT client loaded AttackBot, HealBot and Supplies together."
     },
     {
       "name": "local-combat",
       "status": "passed",
-      "evidence": "GFB, SD e magias testadas localmente com monstros criados pelo GM."
+      "evidence": "GFB, SD and MS spells were tested locally with GM-created Cobra monsters."
     },
     {
       "name": "route-cycle",
       "status": "passed",
-      "evidence": "Hunt utilizada no ambiente MarolaOT; consolidação documental ainda pendente."
+      "evidence": "The adapted hunt was used in the MarolaOT environment before packaging."
+    },
+    {
+      "name": "package-static",
+      "status": "pending",
+      "evidence": "Awaiting pull request CI."
+    },
+    {
+      "name": "clean-install",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "name": "package-rollback",
+      "status": "pending",
+      "evidence": null
     },
     {
       "name": "package-release",
@@ -117,8 +134,10 @@
     "modulesOffAfterInstall": true,
     "secretsProhibited": true,
     "manualCheckpoints": [
-      "Ativar os módulos manualmente e por etapas.",
-      "Executar o primeiro teste com CaveBot desligado."
+      "Run package validation before installation.",
+      "Use the generated dry-run route before the main route.",
+      "Enable AttackBot, HealBot, TargetBot and CaveBot manually and in that order, with CaveBot last.",
+      "Validate rollback before publishing the M7 release."
     ]
   }
 }

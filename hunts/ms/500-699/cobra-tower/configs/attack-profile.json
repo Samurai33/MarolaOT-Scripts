@@ -1,0 +1,151 @@
+{
+  "name": "Cobra Tower MAX DPS v2",
+  "profile": {
+    "enabled": false,
+    "attackTable": [
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 30,
+        "count": 6,
+        "minHp": 35,
+        "maxHp": 100,
+        "cooldown": 40500,
+        "itemId": 0,
+        "spell": "exevo gran mas vis",
+        "enabled": true,
+        "category": 5,
+        "patternCategory": 4,
+        "pattern": 5,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] 6+ Cobras HP 35%+: Rage of the Skies [40.5s]"
+      },
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 15,
+        "count": 3,
+        "minHp": 15,
+        "maxHp": 100,
+        "cooldown": 8250,
+        "itemId": 0,
+        "spell": "exevo vis hur",
+        "enabled": true,
+        "category": 5,
+        "patternCategory": 4,
+        "pattern": 2,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] 3+ Cobras alinhadas: Energy Wave [8.25s]"
+      },
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 10,
+        "count": 3,
+        "minHp": 5,
+        "maxHp": 100,
+        "cooldown": 4250,
+        "itemId": 0,
+        "spell": "exevo gran flam hur",
+        "enabled": true,
+        "category": 5,
+        "patternCategory": 4,
+        "pattern": 11,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] 3+ Cobras alinhadas: Great Fire Wave [4.25s]"
+      },
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 0,
+        "count": 2,
+        "minHp": 0,
+        "maxHp": 100,
+        "cooldown": 2000,
+        "itemId": 3191,
+        "spell": "",
+        "enabled": true,
+        "category": 2,
+        "patternCategory": 2,
+        "pattern": 3,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] 2+ Cobras: Great Fireball Rune"
+      },
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 5,
+        "count": 1,
+        "minHp": 30,
+        "maxHp": 100,
+        "cooldown": 30500,
+        "itemId": 0,
+        "spell": "exori max vis",
+        "enabled": true,
+        "category": 1,
+        "patternCategory": 1,
+        "pattern": 3,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] Alvo solo HP 30%+: Ultimate Energy Strike [30.5s]"
+      },
+      {
+        "creatures": "cobra assassin,cobra vizier,cobra scout",
+        "monsters": [
+          "cobra assassin",
+          "cobra vizier",
+          "cobra scout"
+        ],
+        "mana": 0,
+        "count": 1,
+        "minHp": 0,
+        "maxHp": 100,
+        "cooldown": 2000,
+        "itemId": 3155,
+        "spell": "",
+        "enabled": true,
+        "category": 3,
+        "patternCategory": 3,
+        "pattern": 10,
+        "tooltip": "cobra assassin,cobra vizier,cobra scout",
+        "orMore": true,
+        "description": "[MAX DPS] Alvo restante: Sudden Death Rune"
+      }
+    ],
+    "ignoreMana": false,
+    "Kills": false,
+    "Rotate": true,
+    "Cooldown": true,
+    "Visible": false,
+    "pvpMode": false,
+    "KillsAmount": 1,
+    "PvpSafe": true,
+    "BlackListSafe": false,
+    "AntiRsRange": 5,
+    "Training": false
+  }
+}

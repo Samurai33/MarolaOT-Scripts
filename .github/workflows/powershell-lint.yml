@@ -5,22 +5,63 @@ on:
     paths:
       - '**/*.ps1'
       - '**/*.psm1'
+      - 'PSScriptAnalyzerSettings.psd1'
+      - '.github/workflows/powershell-lint.yml'
   pull_request:
     paths:
       - '**/*.ps1'
       - '**/*.psm1'
+      - 'PSScriptAnalyzerSettings.psd1'
+      - '.github/workflows/powershell-lint.yml'
+
+permissions:
+  contents: read
 
 jobs:
   analyze:
     runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
       - name: Install PSScriptAnalyzer
         shell: pwsh
         run: Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
-      - name: Analyze scripts
+
+      - name: Analyze PowerShell files
         shell: pwsh
         run: |
-          $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse -Severity Warning,Error
-          $results | Format-Table -AutoSize
-          if ($results) { throw 'PSScriptAnalyzer found issues.' }
+          $ErrorActionPreference = 'Stop'
+          $settingsPath = './PSScriptAnalyzerSettings.psd1'
+          $paths = @('./scripts', './hunts') | Where-Object { Test-Path -LiteralPath $_ }
+          $results = foreach ($path in $paths) {
+            Invoke-ScriptAnalyzer -Path $path -Recurse -Settings $settingsPath
+          }
+
+          @($results) |
+            Select-Object RuleName, Severity, ScriptPath, Line, Column, Message |
+            ConvertTo-Json -Depth 4 |
+            Set-Content -LiteralPath ./psscriptanalyzer-results.json -Encoding utf8
+
+          foreach ($result in @($results)) {
+            $relativePath = Resolve-Path -LiteralPath $result.ScriptPath -Relative
+            $message = ($result.Message -replace "`r|`n", ' ')
+            Write-Host "::error file=$relativePath,line=$($result.Line),col=$($result.Column)::$($result.RuleName): $message"
+          }
+
+          if (@($results).Count -gt 0) {
+            throw "PSScriptAnalyzer found $(@($results).Count) issue(s)."
+          }
+
+          Write-Host 'PSScriptAnalyzer found no configured warnings or errors.'
+
+      - name: Upload analysis report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: psscriptanalyzer-results
+          path: psscriptanalyzer-results.json
+          if-no-files-found: warn

@@ -1,0 +1,44 @@
+{
+  "name": "Cobra Tower MAX DPS v2",
+  "profile": {
+    "enabled": false,
+    "spellTable": [
+      {
+        "index": 1,
+        "spell": "exura vita",
+        "sign": "<",
+        "origin": "HP%",
+        "cost": 160,
+        "value": 75,
+        "enabled": true
+      },
+      {
+        "index": 2,
+        "spell": "exura gran",
+        "sign": "<",
+        "origin": "HP%",
+        "cost": 70,
+        "value": 92,
+        "enabled": true
+      }
+    ],
+    "itemTable": [
+      {
+        "index": 1,
+        "item": 23373,
+        "sign": "<",
+        "origin": "MP%",
+        "value": 60,
+        "enabled": true,
+        "subType": 0
+      }
+    ],
+    "Visible": true,
+    "OldSchool": false,
+    "Cooldown": true,
+    "Interval": true,
+    "Conditions": true,
+    "Delay": true,
+    "MessageDelay": false
+  }
+}
