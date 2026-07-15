@@ -1,0 +1,28 @@
+{
+  "name": "Cobra Tower MAX DPS v2",
+  "profile": {
+    "items": {
+      "23373": {
+        "min": 200,
+        "max": 700,
+        "avg": 0
+      },
+      "3191": {
+        "min": 700,
+        "max": 2500,
+        "avg": 0
+      },
+      "3155": {
+        "min": 250,
+        "max": 1000,
+        "avg": 0
+      }
+    },
+    "capSwitch": true,
+    "capValue": "300",
+    "staminaSwitch": false,
+    "staminaValue": "850",
+    "SoftBoots": false,
+    "imbues": false
+  }
+}
