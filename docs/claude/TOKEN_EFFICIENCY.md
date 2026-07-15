@@ -40,8 +40,8 @@ Apply in this order:
 
 - Keep stable instructions at the beginning.
 - Avoid editing `CLAUDE.md`, settings, tools, or model repeatedly during a session.
-- Invoke skills when needed; they append without rewriting earlier history.
-- Prefer `/recap` for a visible summary when compaction is unnecessary.
+- Invoke skills when needed; they append task-specific instructions without bloating startup context.
+- Request a concise visible status summary instead of compacting when the context is still healthy.
 - Keep working in the same directory when cache sharing matters.
 - Do not disable prompt caching for normal use.
 - On API/provider usage, choose TTL based on measured break patterns and cost.
