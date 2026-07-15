@@ -1,0 +1,32 @@
+name: Order of the Falcon Research
+
+on:
+  push:
+    paths:
+      - 'quests/access/the-order-of-the-falcon/**'
+      - '.github/workflows/order-of-the-falcon-research.yml'
+  pull_request:
+    paths:
+      - 'quests/access/the-order-of-the-falcon/**'
+      - '.github/workflows/order-of-the-falcon-research.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate research package
+        run: python quests/access/the-order-of-the-falcon/validation/test_order_of_the_falcon_research.py
