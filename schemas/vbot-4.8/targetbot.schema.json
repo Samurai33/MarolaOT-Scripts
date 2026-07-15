@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Samurai33/MarolaOT-Scripts/schemas/vbot-4.8/targetbot.schema.json",
+  "title": "vBot 4.8 TargetBot configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["looting", "targeting"],
+  "properties": {
+    "looting": { "$ref": "#/$defs/looting" },
+    "targeting": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/targetEntry" }
+    }
+  },
+  "$defs": {
+    "lootItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "count"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 100 },
+        "count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "looting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items", "containers", "everyItem", "minCapacity"],
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/lootItem" }
+        },
+        "containers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/lootItem" }
+        },
+        "everyItem": { "type": "boolean" },
+        "minCapacity": { "type": "integer", "minimum": 0 },
+        "maxDanger": { "type": "integer", "minimum": 0, "maximum": 10 }
+      }
+    },
+    "targetEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "regex",
+        "priority",
+        "danger",
+        "maxDistance",
+        "keepDistanceRange",
+        "lureCount",
+        "chase",
+        "keepDistance",
+        "dontLoot",
+        "lure",
+        "lureCavebot",
+        "avoidAttacks"
+      ],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "regex": { "type": "string", "minLength": 1 },
+        "priority": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "danger": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "maxDistance": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "keepDistanceRange": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "anchorRange": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "lureCount": { "type": "integer", "minimum": 0, "maximum": 30 },
+        "lureMin": { "type": "integer", "minimum": 0, "maximum": 29 },
+        "lureMax": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "lureDelay": { "type": "integer", "minimum": 100, "maximum": 10000 },
+        "delayFrom": { "type": "integer", "minimum": 1, "maximum": 29 },
+        "rePositionAmount": { "type": "integer", "minimum": 0, "maximum": 7 },
+        "closeLureAmount": { "type": "integer", "minimum": 0, "maximum": 8 },
+        "chase": { "type": "boolean" },
+        "keepDistance": { "type": "boolean" },
+        "anchor": { "type": "boolean" },
+        "dontLoot": { "type": "boolean" },
+        "lure": { "type": "boolean" },
+        "lureCavebot": { "type": "boolean" },
+        "faceMonster": { "type": "boolean" },
+        "avoidAttacks": { "type": "boolean" },
+        "dynamicLure": { "type": "boolean" },
+        "dynamicLureDelay": { "type": "boolean" },
+        "diamondArrows": { "type": "boolean" },
+        "rePosition": { "type": "boolean" },
+        "closeLure": { "type": "boolean" },
+        "rpSafe": { "type": "boolean" },
+        "useSpellAttack": { "type": "boolean" },
+        "useRuneAttack": { "type": "boolean" },
+        "minMana": { "type": "integer", "minimum": 0 },
+        "groupAttackTargets": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "groupAttackSpell": { "type": "string" },
+        "runeAttackDelay": { "type": "integer", "minimum": 0 },
+        "useGroupAttackRune": { "type": "boolean" },
+        "groupRuneAttackRadius": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "groupAttackIgnorePlayers": { "type": "boolean" },
+        "groupAttackIgnoreParty": { "type": "boolean" },
+        "useGroupAttack": { "type": "boolean" },
+        "groupRuneAttackTargets": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "attackSpell": { "type": "string" },
+        "groupAttackRune": { "type": "integer", "minimum": 0 },
+        "groupAttackRadius": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "attackRune": { "type": "integer", "minimum": 0 },
+        "minManaGroup": { "type": "integer", "minimum": 0 },
+        "groupAttackDelay": { "type": "integer", "minimum": 0 },
+        "attackSpellDelay": { "type": "integer", "minimum": 0 },
+        "groupRuneAttackDelay": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}
