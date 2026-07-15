@@ -19,7 +19,8 @@ Todas as mudanças relevantes serão documentadas neste arquivo.
 - Schema JSON do manifesto de origem.
 - Template de manifesto para novos pacotes.
 - Manifesto M6 da Cobra Tower.
-- Pacote documental inicial da Cobra Tower para consolidação M7.
+- Pacote Cobra Tower `1.0.0-rc.1` com source lock, inventário, perfis separados, instalador transacional, dry-run, rollback específico, testes e checksums.
+- Workflow Windows dedicado à validação do pacote Cobra Tower.
 - Manifesto M1 e documentação de pesquisa de Werehyaenas.
 - Padrão seguro de automação assistida para quests.
 
@@ -29,8 +30,10 @@ Todas as mudanças relevantes serão documentadas neste arquivo.
 - Catálogo atualizado para distinguir ideia, referência, adaptação, teste e release.
 - Summer Court reclassificada como pesquisa M0/M1, sem rota executável ou status inflado.
 - Expansão de hunts passou a exigir evidência, commit, licença e componentes mínimos.
+- Cobra Tower passou a importar as referências comunitárias pelo commit e Git blob fixados, sem republicar os arquivos originais de licença não confirmada.
 
 ### Security
 
 - Redistribuição de conteúdo comunitário passou a depender de auditoria de licença.
 - Novos pacotes exigem backup, rollback, módulos desligados e proibição de segredos no manifesto.
+- O instalador Cobra Tower tenta restaurar automaticamente o backup quando uma etapa falha após o início da gravação.
