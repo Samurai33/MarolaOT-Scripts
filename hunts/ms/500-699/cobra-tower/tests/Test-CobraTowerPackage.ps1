@@ -8,11 +8,11 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $packageRoot = Split-Path -Parent $PSScriptRoot
-$errors = [System.Collections.Generic.List[string]]::new()
+$validationErrors = [System.Collections.Generic.List[string]]::new()
 
 function Add-TestError {
     param([Parameter(Mandatory)][string]$Message)
-    $errors.Add($Message)
+    $validationErrors.Add($Message)
 }
 
 function Read-JsonDocument {
@@ -25,6 +25,38 @@ function Read-JsonDocument {
         Add-TestError "Invalid JSON '$Path': $($_.Exception.Message)"
         return $null
     }
+}
+
+function Get-CanonicalTextSha256 {
+    param([Parameter(Mandatory)][string]$Path)
+
+    $utf8Strict = [System.Text.UTF8Encoding]::new($false, $true)
+    $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+    $bytes = [System.IO.File]::ReadAllBytes($Path)
+
+    try {
+        $text = $utf8Strict.GetString($bytes)
+    }
+    catch {
+        throw "Checksum target is not valid UTF-8 text: $Path"
+    }
+
+    if ($text.Length -gt 0 -and $text[0] -eq [char]0xFEFF) {
+        $text = $text.Substring(1)
+    }
+
+    $canonicalText = $text.Replace("`r`n", "`n").Replace("`r", "`n")
+    $canonicalBytes = $utf8NoBom.GetBytes($canonicalText)
+    $sha256 = [System.Security.Cryptography.SHA256]::Create()
+
+    try {
+        $hash = $sha256.ComputeHash($canonicalBytes)
+    }
+    finally {
+        $sha256.Dispose()
+    }
+
+    return (($hash | ForEach-Object { $_.ToString('x2') }) -join '')
 }
 
 $requiredFiles = @(
@@ -188,21 +220,21 @@ if (-not $SkipChecksums) {
                 continue
             }
 
-            $actual = (Get-FileHash -Algorithm SHA256 -LiteralPath $fullPath).Hash.ToLowerInvariant()
+            $actual = Get-CanonicalTextSha256 -Path $fullPath
             if ($actual -ne $expected) {
-                Add-TestError "Checksum mismatch: $relativePath"
+                Add-TestError "Checksum mismatch: $relativePath (expected $expected, actual $actual)"
             }
         }
     }
 }
 
-if ($errors.Count -gt 0) {
+if ($validationErrors.Count -gt 0) {
     Write-Host "`nPACKAGE VALIDATION FAILED" -ForegroundColor Red
-    foreach ($testError in $errors) {
+    foreach ($testError in $validationErrors) {
         Write-Host " - $testError" -ForegroundColor Red
     }
 
-    throw "Cobra Tower package validation failed with $($errors.Count) error(s)."
+    throw "Cobra Tower package validation failed with $($validationErrors.Count) error(s)."
 }
 
 Write-Host "`nCobra Tower package validation passed." -ForegroundColor Green
