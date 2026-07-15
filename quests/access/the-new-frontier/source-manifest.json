@@ -47,7 +47,7 @@
     "cavebot": {
       "status": "missing",
       "path": null,
-      "notes": "Nenhuma rota pública completa, reproduzível e licenciável foi localizada. A futura rota será capturada no MarolaOT por missão e por segmento."
+      "notes": "Existe um dataset provisório de coordenadas editoriais em evidence/tibiawiki-coordinates.json, mas nenhuma coordenada pode virar waypoint antes da validação no MarolaOT."
     },
     "targetbot": {
       "status": "missing",
@@ -84,7 +84,8 @@
     "A quest foi dividida em dez missões assistidas e checkpoints manuais.",
     "A missão 5 foi subdividida por NPC para evitar diálogos e palavras de persuasão automáticos.",
     "Bosses, arenas, prisão, uso de itens e etapas com outro jogador foram classificados como manuais.",
-    "Nenhum waypoint foi inferido de mapas ou screenshots."
+    "As coordenadas textuais do TibiaWiki foram organizadas como referências provisórias.",
+    "Nenhum waypoint ou CaveBot foi gerado automaticamente a partir das coordenadas editoriais."
   ],
   "tests": [
     {
@@ -101,6 +102,11 @@
       "name": "quest-safety-gate",
       "status": "passed",
       "evidence": "validation/test_the_new_frontier_research.py"
+    },
+    {
+      "name": "provisional-coordinate-gate",
+      "status": "pending",
+      "evidence": "evidence/tibiawiki-coordinates.json"
     }
   ],
   "safety": {
@@ -110,6 +116,7 @@
     "secretsProhibited": true,
     "manualCheckpoints": [
       "Confirmar o estado da quest e do Quest Log antes de cada missão.",
+      "Validar no MarolaOT cada coordenada editorial antes de criar waypoint.",
       "Usar manualmente o Flask with Beaver Bait nas três árvores.",
       "Assumir manualmente o combate contra Shard of Corruption.",
       "Executar manualmente os seis diálogos e palavras de persuasão da missão 5.",
