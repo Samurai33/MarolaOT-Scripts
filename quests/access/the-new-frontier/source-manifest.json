@@ -99,7 +99,7 @@
     },
     {
       "name": "quest-safety-gate",
-      "status": "pending",
+      "status": "passed",
       "evidence": "validation/test_the_new_frontier_research.py"
     }
   ],
