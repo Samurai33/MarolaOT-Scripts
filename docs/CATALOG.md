@@ -25,18 +25,32 @@ Consulte também:
 
 | Maturidade | Hunt | Vocação | Faixa | Evidência atual | Próximo passo |
 |---:|---|---|---:|---|---|
-| M6 | Cobra Tower | MS | 550+ | Rota, refill, TargetBot e combate adaptados e funcionais | Consolidar pacote e publicar release M7 |
-| M1/M2 parcial | Werehyaenas | MS | 300+ | TargetBot comunitário localizado; CaveBot e refill não confirmados | Auditar licença e localizar rota completa |
+| M6 | Cobra Tower | MS | 550+ | Release candidate autocontido, CI verde e validação anterior no MarolaOT | Testar instalação limpa, dry-run e rollback antes de M7 |
+| M2 | Werehyaenas | MS | 300+ | TargetBot, licença, hashes, criaturas e acesso auditados; CaveBot/refill não encontrados | Localizar rota reproduzível ou realizar captura própria documentada |
 | M0/M1 | Summer Court | MS | 500+ | Nenhum pacote comunitário completo confirmado | Continuar pesquisa; não criar rota por suposição |
 | M0 | Asura Mirror | MS | 450+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 | M0 | Winter Court | MS | 500+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 | M0 | Falcon Bastion | MS | 500+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 | M0 | Issavi Sphinx/Lamassu | MS | 450+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 
+### Werehyaenas: limites do M2
+
+O pacote M2 possui evidência suficiente para orientar uma futura adaptação, mas não contém:
+
+- CaveBot;
+- TargetBot redistribuído;
+- AttackBot, HealBot ou Supplies executáveis;
+- instalador;
+- rollback;
+- rota de refill.
+
+O CI específico impede a inclusão prematura desses componentes enquanto o manifesto permanecer em M2.
+
 ## Quests e acessos
 
 | Maturidade | Quest/acesso | Tipo | Evidência atual | Próximo passo |
 |---:|---|---|---|---|
+| M1/M2 parcial | Ancient Feud Shortcut | Dependência de acesso | Storage e quatro pares de teleporte auditados no Canary; missão que libera o acesso não auditada | Documentar a quest completa antes de qualquer automação |
 | M0 | Dream Courts | Acesso | Estrutura conceitual; nenhuma rota auditada | Buscar fontes de NPCs, storages, itens e checkpoints |
 | M0 | Cobra Bastion | Acesso | Backlog | Registrar fontes e versão do servidor |
 | M0 | Falcon Bastion | Acesso | Backlog | Registrar fontes e versão do servidor |
@@ -50,6 +64,7 @@ Consulte também:
 hunts/<vocacao>/<faixa>/<slug>/
 ├── README.md
 ├── source-manifest.json
+├── source-lock.json
 ├── cavebot/
 ├── targetbot/
 ├── configs/
@@ -57,6 +72,8 @@ hunts/<vocacao>/<faixa>/<slug>/
 ├── rollback/
 └── tests/
 ```
+
+Pacotes M0–M2 podem omitir os diretórios executáveis. Eles devem registrar claramente os componentes ausentes e não podem aparentar ser instaláveis.
 
 Um pacote somente alcança M6 quando cumprir:
 
@@ -77,6 +94,7 @@ Um pacote somente alcança M6 quando cumprir:
 quests/<categoria>/<slug>/
 ├── README.md
 ├── source-manifest.json
+├── source-lock.json
 ├── checklist.md
 ├── route/
 ├── validation/
@@ -87,9 +105,9 @@ Quests não automatizam decisões irreversíveis sem parada explícita. Entregas
 
 ## Ordem de execução
 
-1. **P0:** fundação, manifestos, registro de fontes e CI.
-2. **P1:** consolidar Cobra Tower como release de referência.
-3. **P2:** reconstruir Werehyaenas a partir de evidência verificável.
+1. **P0:** fundação, manifestos, registro de fontes e CI — concluído.
+2. **P1:** consolidar Cobra Tower como release de referência — release candidate em revisão.
+3. **P2:** reconstruir Werehyaenas a partir de evidência verificável — pesquisa M2 concluída; adaptação bloqueada pela rota.
 4. **P3:** ampliar validação estrutural e testes automáticos.
 5. **P4:** criar framework seguro para quests e acessos.
 6. **P5:** selecionar novas hunts pela qualidade das fontes encontradas.
