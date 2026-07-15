@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": {
+    "name": "The Order of the Falcon",
+    "slug": "the-order-of-the-falcon",
+    "type": "quest",
+    "status": "reference-audited",
+    "vocation": null,
+    "levelRange": "250+ (300+ recomendado)"
+  },
+  "target": {
+    "client": "MarolaOT Client",
+    "bot": "vBot 4.8",
+    "platform": "Windows",
+    "server": "MarolaOT"
+  },
+  "maturity": "M2",
+  "sources": [
+    {
+      "name": "Tibia Wiki Brasil — The Order of the Falcon Quest",
+      "url": "https://www.tibiawiki.com.br/index.php?title=The_Order_of_the_Falcon_Quest&oldid=401317",
+      "role": "documentation",
+      "commit": null,
+      "paths": [],
+      "license": "external-editorial-content",
+      "redistribution": "reference-only",
+      "notes": "Referência editorial para requisitos, ordem operacional, NPCs, itens, coordenadas publicadas e checkpoints. O texto do guia não é reproduzido integralmente."
+    },
+    {
+      "name": "OpenTibiaBR Canary",
+      "url": "https://github.com/opentibiabr/canary",
+      "role": "game-data",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "paths": [
+        "data-otservbr-global/lib/core/quests/catalog/049_the_secret_library.lua",
+        "data-otservbr-global/scripts/quests/the_secret_library_quest/creaturescripts_kill.lua",
+        "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/actions_doors.lua",
+        "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/actions_oberonLever.lua",
+        "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/movements_bossEntrance.lua"
+      ],
+      "license": "GPL-2.0",
+      "redistribution": "reference-only",
+      "notes": "Fonte primária para storages simbólicos, progressão dos bosses, portas, barcos, entrada e cooldown do Oberon. Nenhum código do Canary é copiado para o pacote."
+    }
+  ],
+  "components": {
+    "cavebot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Nenhuma rota pública completa, reproduzível e licenciável foi localizada. A futura rota será capturada no MarolaOT por segmentos."
+    },
+    "targetbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Configuração de combate não faz parte da auditoria M2 da quest."
+    },
+    "attackbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Bosses e Oberon permanecem manuais."
+    },
+    "healbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será definido somente após teste local autorizado."
+    },
+    "supplies": {
+      "status": "missing",
+      "path": null,
+      "notes": "Quantidade de supplies e IDs específicos do MarolaOT ainda precisam de validação."
+    },
+    "refill": {
+      "status": "missing",
+      "path": null,
+      "notes": "Rota Edron depot, compra e retorno ainda não foi capturada."
+    },
+    "rollback": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será obrigatório quando houver instalador ou arquivos executáveis."
+    }
+  },
+  "changes": [
+    "A sequência editorial foi convertida em etapas assistidas e checkpoints manuais.",
+    "A progressão de bosses foi cruzada com storages e actions do Canary.",
+    "Ritual noturno, consumo de item, minibosses, portal e Oberon foram classificados como ações manuais.",
+    "Nenhum waypoint foi inferido de mapas ou screenshots."
+  ],
+  "tests": [
+    {
+      "name": "source-audit",
+      "status": "passed",
+      "evidence": "source-lock.json"
+    },
+    {
+      "name": "license-audit",
+      "status": "passed",
+      "evidence": "source-lock.json"
+    },
+    {
+      "name": "ready-route-search",
+      "status": "passed",
+      "evidence": "Nenhum pacote público completo e auditável foi localizado; resultado negativo documentado."
+    },
+    {
+      "name": "quest-safety-gate",
+      "status": "pending",
+      "evidence": "validation/test_order_of_the_falcon_research.py"
+    }
+  ],
+  "safety": {
+    "backupRequired": true,
+    "rollbackRequired": true,
+    "modulesOffAfterInstall": true,
+    "secretsProhibited": true,
+    "manualCheckpoints": [
+      "Confirmar The New Frontier concluída e estado atual da quest.",
+      "Confirmar que o jogo está no período noturno antes do ritual.",
+      "Confirmar manualmente o uso do Bucket Filled with Chalk no símbolo.",
+      "Parar antes de cada miniboss e assumir combate manual.",
+      "Parar antes de usar barcos ou portas quando o storage de progresso não estiver confirmado.",
+      "Parar antes do portal e da alavanca do Grand Master Oberon.",
+      "Executar debate e combate contra Oberon integralmente de forma manual."
+    ]
+  }
+}
