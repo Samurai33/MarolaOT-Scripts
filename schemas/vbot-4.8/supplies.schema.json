@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Samurai33/MarolaOT-Scripts/schemas/vbot-4.8/supplies.schema.json",
+  "title": "vBot 4.8 Supplies configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["supplies"],
+  "properties": {
+    "supplies": {
+      "type": "object",
+      "required": ["currentProfile"],
+      "properties": {
+        "currentProfile": { "type": "string", "minLength": 1, "maxLength": 100 }
+      },
+      "patternProperties": {
+        "^(?!currentProfile$).+": { "$ref": "#/$defs/profile" }
+      },
+      "additionalProperties": false,
+      "minProperties": 2
+    }
+  },
+  "$defs": {
+    "numericValue": {
+      "oneOf": [
+        { "type": "number", "minimum": 0 },
+        { "type": "string", "pattern": "^[0-9]+(?:\\.[0-9]+)?$" }
+      ]
+    },
+    "itemRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max", "avg"],
+      "properties": {
+        "min": { "$ref": "#/$defs/numericValue" },
+        "max": { "$ref": "#/$defs/numericValue" },
+        "avg": { "$ref": "#/$defs/numericValue" }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items"],
+      "properties": {
+        "items": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[1-9][0-9]*$" },
+          "additionalProperties": { "$ref": "#/$defs/itemRange" }
+        },
+        "capSwitch": { "type": "boolean" },
+        "capValue": { "$ref": "#/$defs/numericValue" },
+        "staminaSwitch": { "type": "boolean" },
+        "staminaValue": { "$ref": "#/$defs/numericValue" },
+        "SoftBoots": { "type": "boolean" },
+        "imbues": { "type": "boolean" }
+      }
+    }
+  }
+}
