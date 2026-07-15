@@ -1,0 +1,26 @@
+{
+  "looting": {
+    "items": [],
+    "containers": [],
+    "everyItem": false,
+    "minCapacity": 0
+  },
+  "targeting": [
+    {
+      "name": "Invalid Creature",
+      "regex": "^invalid creature$",
+      "priority": 11,
+      "danger": 3,
+      "maxDistance": 99,
+      "keepDistanceRange": 3,
+      "lureCount": 3,
+      "chase": false,
+      "keepDistance": false,
+      "dontLoot": true,
+      "lure": false,
+      "lureCavebot": true,
+      "avoidAttacks": false,
+      "unknownSetting": true
+    }
+  ]
+}
