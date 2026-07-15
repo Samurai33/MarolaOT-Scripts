@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": {
+    "name": "Werehyaenas MS",
+    "slug": "werehyaenas-ms",
+    "type": "hunt",
+    "status": "reference-found",
+    "vocation": "Master Sorcerer",
+    "levelRange": "300+"
+  },
+  "target": {
+    "client": "MarolaOT Client",
+    "bot": "vBot 4.8",
+    "platform": "Windows",
+    "server": "MarolaOT"
+  },
+  "maturity": "M1",
+  "sources": [
+    {
+      "name": "Kolczan/Tibia-Scripts",
+      "url": "https://github.com/Kolczan/Tibia-Scripts",
+      "role": "community-pack",
+      "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
+      "paths": [
+        "otclientv8/bot/EK tsunami/targetbot_configs/Werehyaenas.json"
+      ],
+      "license": "not-confirmed",
+      "redistribution": "reference-only",
+      "notes": "TargetBot localizado; CaveBot e refill ainda não confirmados."
+    },
+    {
+      "name": "OTCv8/otclientv8",
+      "url": "https://github.com/OTCv8/otclientv8",
+      "role": "upstream",
+      "commit": null,
+      "paths": [
+        "modules/game_bot/default_configs/vBot_4.8"
+      ],
+      "license": "MIT",
+      "redistribution": "allowed",
+      "notes": "Fixar commit antes de promover o pacote para M2."
+    }
+  ],
+  "components": {
+    "cavebot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Não localizado no levantamento inicial."
+    },
+    "targetbot": {
+      "status": "referenced",
+      "path": null,
+      "notes": "Referência comunitária registrada; conteúdo não redistribuído."
+    },
+    "attackbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será criado somente após auditoria dos monstros e elementos."
+    },
+    "healbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Pendente."
+    },
+    "supplies": {
+      "status": "missing",
+      "path": null,
+      "notes": "NPCs e quantidades ainda não auditados."
+    },
+    "refill": {
+      "status": "missing",
+      "path": null,
+      "notes": "Rota de refill não confirmada."
+    },
+    "rollback": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será obrigatório no instalador."
+    }
+  },
+  "changes": [],
+  "tests": [
+    {
+      "name": "source-audit",
+      "status": "pending",
+      "evidence": null
+    }
+  ],
+  "safety": {
+    "backupRequired": true,
+    "rollbackRequired": true,
+    "modulesOffAfterInstall": true,
+    "secretsProhibited": true,
+    "manualCheckpoints": []
+  }
+}
