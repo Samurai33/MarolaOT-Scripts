@@ -1,0 +1,50 @@
+name: Validate vBot Schemas
+
+on:
+  push:
+    paths:
+      - 'schemas/vbot-4.8/**'
+      - 'configs/vbot-4.8/**'
+      - 'hunts/**/AttackBot.json'
+      - 'hunts/**/HealBot.json'
+      - 'hunts/**/Supplies.json'
+      - 'hunts/**/targetbot_configs/*.json'
+      - 'tests/fixtures/vbot-schemas/**'
+      - 'scripts/validation/validate_vbot_schemas.py'
+      - '.github/workflows/validate-vbot-schemas.yml'
+  pull_request:
+    paths:
+      - 'schemas/vbot-4.8/**'
+      - 'configs/vbot-4.8/**'
+      - 'hunts/**/AttackBot.json'
+      - 'hunts/**/HealBot.json'
+      - 'hunts/**/Supplies.json'
+      - 'hunts/**/targetbot_configs/*.json'
+      - 'tests/fixtures/vbot-schemas/**'
+      - 'scripts/validation/validate_vbot_schemas.py'
+      - '.github/workflows/validate-vbot-schemas.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate vBot 4.8 configurations
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validator
+        run: python -m pip install --disable-pip-version-check 'jsonschema>=4.22,<5'
+
+      - name: Validate schemas and configurations
+        run: python scripts/validation/validate_vbot_schemas.py

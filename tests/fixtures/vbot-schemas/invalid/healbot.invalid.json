@@ -1,0 +1,21 @@
+{
+  "currentHealBotProfile": 1,
+  "healbot": [
+    {
+      "enabled": "false",
+      "spellTable": [],
+      "itemTable": [],
+      "name": "Invalid profile",
+      "Visible": true,
+      "Cooldown": true,
+      "Interval": true,
+      "Conditions": true,
+      "Delay": true,
+      "MessageDelay": false
+    },
+    {},
+    {},
+    {},
+    {}
+  ]
+}

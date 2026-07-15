@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Samurai33/MarolaOT-Scripts/schemas/vbot-4.8/healbot.schema.json",
+  "title": "vBot 4.8 HealBot configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["currentHealBotProfile", "healbot"],
+  "properties": {
+    "currentHealBotProfile": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "ConditionPanel": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "healbot": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/profile" }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "spellTable",
+        "itemTable",
+        "name",
+        "Visible",
+        "Cooldown",
+        "Interval",
+        "Conditions",
+        "Delay",
+        "MessageDelay"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "spellTable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/spellEntry" }
+        },
+        "itemTable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/itemEntry" }
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "Visible": { "type": "boolean" },
+        "OldSchool": { "type": "boolean" },
+        "Cooldown": { "type": "boolean" },
+        "Interval": { "type": "boolean" },
+        "Conditions": { "type": "boolean" },
+        "Delay": { "type": "boolean" },
+        "MessageDelay": { "type": "boolean" }
+      }
+    },
+    "conditionOrigin": {
+      "enum": ["MP", "HP", "MP%", "HP%", "burst"]
+    },
+    "conditionSign": {
+      "enum": [">", "<", "="]
+    },
+    "spellEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "spell", "sign", "origin", "cost", "value", "enabled"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 1 },
+        "spell": { "type": "string", "minLength": 1 },
+        "sign": { "$ref": "#/$defs/conditionSign" },
+        "origin": { "$ref": "#/$defs/conditionOrigin" },
+        "cost": { "type": "integer", "minimum": 0 },
+        "value": { "type": "number", "minimum": 0 },
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "itemEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "item", "sign", "origin", "value", "enabled"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 1 },
+        "item": { "type": "integer", "minimum": 100 },
+        "sign": { "$ref": "#/$defs/conditionSign" },
+        "origin": { "$ref": "#/$defs/conditionOrigin" },
+        "value": { "type": "number", "minimum": 0 },
+        "enabled": { "type": "boolean" },
+        "subType": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

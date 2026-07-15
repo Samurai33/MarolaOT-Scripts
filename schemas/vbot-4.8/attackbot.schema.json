@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Samurai33/MarolaOT-Scripts/schemas/vbot-4.8/attackbot.schema.json",
+  "title": "vBot 4.8 AttackBot configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["currentBotProfile", "AttackBot"],
+  "properties": {
+    "currentBotProfile": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "AttackBot": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": { "$ref": "#/$defs/profile" }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "attackTable",
+        "ignoreMana",
+        "Kills",
+        "Rotate",
+        "name",
+        "Cooldown",
+        "Visible",
+        "pvpMode",
+        "KillsAmount",
+        "PvpSafe",
+        "BlackListSafe",
+        "AntiRsRange"
+      ],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "attackTable": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/attackEntry" }
+        },
+        "ignoreMana": { "type": "boolean" },
+        "Kills": { "type": "boolean" },
+        "Rotate": { "type": "boolean" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "Cooldown": { "type": "boolean" },
+        "Visible": { "type": "boolean" },
+        "pvpMode": { "type": "boolean" },
+        "KillsAmount": { "type": "integer", "minimum": 1 },
+        "PvpSafe": { "type": "boolean" },
+        "BlackListSafe": { "type": "boolean" },
+        "AntiRsRange": { "type": "integer", "minimum": 0, "maximum": 20 },
+        "Training": { "type": "boolean" }
+      }
+    },
+    "attackEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creatures",
+        "monsters",
+        "mana",
+        "count",
+        "minHp",
+        "maxHp",
+        "cooldown",
+        "itemId",
+        "spell",
+        "enabled",
+        "category",
+        "patternCategory",
+        "pattern",
+        "tooltip",
+        "orMore",
+        "description"
+      ],
+      "properties": {
+        "creatures": { "type": "string" },
+        "monsters": {
+          "oneOf": [
+            { "type": "boolean", "const": true },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "mana": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "count": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "minHp": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "maxHp": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "cooldown": { "type": "integer", "minimum": 0, "maximum": 600000 },
+        "itemId": { "type": "integer", "minimum": 0 },
+        "spell": { "type": "string" },
+        "enabled": { "type": "boolean" },
+        "category": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "patternCategory": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "pattern": { "type": "integer", "minimum": 1, "maximum": 11 },
+        "tooltip": {
+          "type": ["string", "boolean", "null"]
+        },
+        "orMore": { "type": "boolean" },
+        "description": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "category": { "const": 1 } }, "required": ["category"] },
+          "then": {
+            "properties": {
+              "patternCategory": { "const": 1 },
+              "pattern": { "minimum": 1, "maximum": 10 },
+              "spell": { "minLength": 1 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": 2 } }, "required": ["category"] },
+          "then": {
+            "properties": {
+              "patternCategory": { "const": 2 },
+              "pattern": { "minimum": 1, "maximum": 3 },
+              "itemId": { "minimum": 100 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": 3 } }, "required": ["category"] },
+          "then": {
+            "properties": {
+              "patternCategory": { "const": 3 },
+              "pattern": { "minimum": 1, "maximum": 10 },
+              "itemId": { "minimum": 100 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": 4 } }, "required": ["category"] },
+          "then": {
+            "properties": {
+              "patternCategory": { "const": 3 },
+              "pattern": { "minimum": 1, "maximum": 10 },
+              "spell": { "minLength": 1 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "category": { "const": 5 } }, "required": ["category"] },
+          "then": {
+            "properties": {
+              "patternCategory": { "const": 4 },
+              "pattern": { "minimum": 1, "maximum": 11 },
+              "spell": { "minLength": 1 }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
