@@ -124,7 +124,7 @@ def main() -> int:
         "persuasion dialogues": ("persuas",),
         "Mooh'Tah arena": ("mooh",),
         "prison": ("pris", "prison"),
-        "two-player requirement": ("dois", "two"),
+        "two-player requirement": ("dois", "two", "outro jogador"),
         "arena": ("arena",),
     }
     combined_checkpoints = " ".join(manifest["safety"]["manualCheckpoints"]).lower()
