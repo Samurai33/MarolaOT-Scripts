@@ -118,18 +118,21 @@ def main() -> int:
     ]
     require(route_entries == [Path("README.md")], "Route directory must contain only README.md in M2.")
 
-    required_manual_phrases = {
-        "beaver",
-        "shard",
-        "persuas",
-        "mooh",
-        "prison",
-        "two",
-        "arena",
+    required_manual_concepts = {
+        "beaver bait": ("beaver",),
+        "Shard of Corruption": ("shard",),
+        "persuasion dialogues": ("persuas",),
+        "Mooh'Tah arena": ("mooh",),
+        "prison": ("pris", "prison"),
+        "two-player requirement": ("dois", "two"),
+        "arena": ("arena",),
     }
     combined_checkpoints = " ".join(manifest["safety"]["manualCheckpoints"]).lower()
-    for phrase in required_manual_phrases:
-        require(phrase in combined_checkpoints, f"Missing manual checkpoint coverage: {phrase}")
+    for concept, alternatives in required_manual_concepts.items():
+        require(
+            any(token in combined_checkpoints for token in alternatives),
+            f"Missing manual checkpoint coverage: {concept}",
+        )
 
     print("The New Frontier M2 research package: VALID")
     return 0
