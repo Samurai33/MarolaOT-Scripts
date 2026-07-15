@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/marolaot-scripts.svg" alt="MarolaOT Scripts" width="760">
+  <img src="https://i.ibb.co/60sNKnZ8/Chat-GPT-Image-14-de-jul-de-2026-22-56-59.jpg" alt="MarolaOT Scripts" width="760">
 
   # MarolaOT Scripts
 
