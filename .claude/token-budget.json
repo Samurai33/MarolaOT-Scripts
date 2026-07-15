@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0",
+  "target": {
+    "repetitiveWorkflowReductionPercent": {
+      "minimum": 40,
+      "stretch": 70
+    },
+    "claimPolicy": "measured-only"
+  },
+  "session": {
+    "claudeMdMaxLines": 200,
+    "clearWhenTaskChanges": true,
+    "compactAtContextPercent": 65,
+    "reviewAtContextPercent": 50
+  },
+  "routing": {
+    "lookupAndInventory": "haiku",
+    "normalImplementation": "sonnet",
+    "architectureAndHardReasoning": "opus-when-justified"
+  },
+  "budgets": {
+    "smallDocumentationChange": {
+      "contextPercent": 20,
+      "subagents": 0
+    },
+    "singlePackageResearch": {
+      "contextPercent": 35,
+      "subagents": 1
+    },
+    "multiFileImplementation": {
+      "contextPercent": 50,
+      "subagents": 2
+    },
+    "releaseOrMigration": {
+      "contextPercent": 65,
+      "subagents": 3
+    }
+  },
+  "measurement": {
+    "commands": [
+      "/usage",
+      "/context",
+      "/memory"
+    ],
+    "requiredFields": [
+      "taskId",
+      "model",
+      "baselineInputTokens",
+      "optimizedInputTokens",
+      "cacheReadInputTokens",
+      "cacheCreationInputTokens",
+      "outputTokens",
+      "durationSeconds",
+      "pass"
+    ]
+  }
+}
