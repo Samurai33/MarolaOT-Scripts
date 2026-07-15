@@ -1,0 +1,20 @@
+{
+  "currentBotProfile": 1,
+  "AttackBot": [
+    {
+      "enabled": false,
+      "attackTable": [],
+      "ignoreMana": false,
+      "Kills": false,
+      "Rotate": false,
+      "name": "Only one profile",
+      "Cooldown": true,
+      "Visible": true,
+      "pvpMode": false,
+      "KillsAmount": 1,
+      "PvpSafe": true,
+      "BlackListSafe": false,
+      "AntiRsRange": 5
+    }
+  ]
+}
