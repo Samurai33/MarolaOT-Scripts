@@ -1,0 +1,35 @@
+# Backups and runtime data
+backup-*/
+quarantine-*/
+*.backup-*
+*.bak
+*.dmp
+*.log
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+
+# Database dumps
+*.sql
+*.sql.gz
+*.dump
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# PowerShell
+*.clixml
+*.ps1xml.user
+
+# Temporary artifacts
+.tmp/
+tmp/
+dist/
