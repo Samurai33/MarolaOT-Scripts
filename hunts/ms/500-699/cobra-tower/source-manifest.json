@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": {
+    "name": "Cobra Tower MAX DPS v2",
+    "slug": "cobra-tower-max-dps-v2",
+    "type": "hunt",
+    "status": "validated",
+    "vocation": "Master Sorcerer",
+    "levelRange": "550+"
+  },
+  "target": {
+    "client": "MarolaOT Client",
+    "bot": "vBot 4.8",
+    "platform": "Windows",
+    "server": "MarolaOT"
+  },
+  "maturity": "M6",
+  "sources": [
+    {
+      "name": "Kolczan/Tibia-Scripts",
+      "url": "https://github.com/Kolczan/Tibia-Scripts",
+      "role": "community-pack",
+      "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
+      "paths": [
+        "otclientv8/bot/MS/cavebot_configs/[550+] Cobra Tower.cfg",
+        "otclientv8/bot/MS/targetbot_configs/cobra.json"
+      ],
+      "license": "not-confirmed",
+      "redistribution": "reference-only",
+      "notes": "Fonte comunitária usada como referência. Arquivos integrais não são republicados até a licença ser esclarecida."
+    },
+    {
+      "name": "OTCv8/otclientv8",
+      "url": "https://github.com/OTCv8/otclientv8",
+      "role": "upstream",
+      "commit": null,
+      "paths": [
+        "modules/game_bot/default_configs/vBot_4.8/cavebot",
+        "modules/game_bot/default_configs/vBot_4.8/targetbot",
+        "modules/game_bot/default_configs/vBot_4.8/vBot"
+      ],
+      "license": "MIT",
+      "redistribution": "allowed",
+      "notes": "Upstream estrutural do vBot 4.8. Fixar commit antes da release M7."
+    }
+  ],
+  "components": {
+    "cavebot": {
+      "status": "validated",
+      "path": null,
+      "notes": "Rota adaptada no ambiente local; será empacotada no P1."
+    },
+    "targetbot": {
+      "status": "validated",
+      "path": null,
+      "notes": "Cobras configuradas com lure e looting interno desligado."
+    },
+    "attackbot": {
+      "status": "validated",
+      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
+      "notes": "Rotação MAX DPS v2 com cooldowns locais alinhados."
+    },
+    "healbot": {
+      "status": "validated",
+      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
+      "notes": "Perfil de cura e mana instalado desligado."
+    },
+    "supplies": {
+      "status": "validated",
+      "path": "scripts/windows/vbot/Set-CobraTowerMaxDpsV2.ps1",
+      "notes": "UMP, GFB e SD configurados."
+    },
+    "refill": {
+      "status": "validated",
+      "path": null,
+      "notes": "Mehkesh e Fenech identificados e integrados na rota adaptada."
+    },
+    "rollback": {
+      "status": "adapted",
+      "path": "scripts/windows/vbot/Restore-VBotCoreConfigs.ps1",
+      "notes": "Restauração disponível; empacotamento específico da hunt é pendência do P1."
+    }
+  },
+  "changes": [
+    "Correção do nome Menkesh para Mehkesh.",
+    "Separação de AttackBot, HealBot e Supplies no schema local.",
+    "Looting interno desligado para uso do lootbag do servidor.",
+    "Rotação ofensiva expandida com UE, waves, GFB, strikes e SD.",
+    "Todos os módulos permanecem desligados após a instalação.",
+    "Backup e validações adicionados ao instalador."
+  ],
+  "tests": [
+    {
+      "name": "json-load",
+      "status": "passed",
+      "evidence": "Cliente abriu com AttackBot, HealBot e Supplies juntos."
+    },
+    {
+      "name": "local-combat",
+      "status": "passed",
+      "evidence": "GFB, SD e magias testadas localmente com monstros criados pelo GM."
+    },
+    {
+      "name": "route-cycle",
+      "status": "passed",
+      "evidence": "Hunt utilizada no ambiente MarolaOT; consolidação documental ainda pendente."
+    },
+    {
+      "name": "package-release",
+      "status": "pending",
+      "evidence": null
+    }
+  ],
+  "safety": {
+    "backupRequired": true,
+    "rollbackRequired": true,
+    "modulesOffAfterInstall": true,
+    "secretsProhibited": true,
+    "manualCheckpoints": [
+      "Ativar os módulos manualmente e por etapas.",
+      "Executar o primeiro teste com CaveBot desligado."
+    ]
+  }
+}
