@@ -6,13 +6,20 @@ $ErrorActionPreference = 'Stop'
 try {
     $raw = [Console]::In.ReadToEnd()
     if ([string]::IsNullOrWhiteSpace($raw)) { exit 0 }
-    $inputObject = $raw | ConvertFrom-Json -Depth 50
+    $inputObject = $raw | ConvertFrom-Json
 } catch {
     Write-Warning "PostToolUse validation skipped: invalid JSON input."
     exit 0
 }
 
-$filePath = [string]($inputObject.tool_input.file_path ?? '')
+$filePath = ''
+if ($null -ne $inputObject.tool_input) {
+    $property = $inputObject.tool_input.PSObject.Properties['file_path']
+    if ($null -ne $property -and $null -ne $property.Value) {
+        $filePath = [string]$property.Value
+    }
+}
+
 if ([string]::IsNullOrWhiteSpace($filePath) -or -not (Test-Path -LiteralPath $filePath -PathType Leaf)) {
     exit 0
 }
@@ -23,7 +30,7 @@ try {
     switch ($extension) {
         '.json' {
             Get-Content -LiteralPath $filePath -Raw -Encoding UTF8 |
-                ConvertFrom-Json -Depth 100 | Out-Null
+                ConvertFrom-Json | Out-Null
             Write-Output "Validated JSON: $filePath"
         }
         '.ps1' {
