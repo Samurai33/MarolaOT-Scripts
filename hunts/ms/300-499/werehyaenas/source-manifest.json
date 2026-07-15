@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": {
+    "name": "Werehyaenas MS",
+    "slug": "werehyaenas-ms",
+    "type": "hunt",
+    "status": "reference-found",
+    "vocation": "Master Sorcerer",
+    "levelRange": "300+"
+  },
+  "target": {
+    "client": "MarolaOT Client",
+    "bot": "vBot 4.8",
+    "platform": "Windows",
+    "server": "MarolaOT"
+  },
+  "maturity": "M1",
+  "sources": [
+    {
+      "name": "Kolczan/Tibia-Scripts",
+      "url": "https://github.com/Kolczan/Tibia-Scripts",
+      "role": "community-pack",
+      "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
+      "paths": [
+        "otclientv8/bot/EK tsunami/targetbot_configs/Werehyaenas.json"
+      ],
+      "license": "not-confirmed",
+      "redistribution": "reference-only",
+      "notes": "TargetBot localizado. CaveBot e refill correspondentes não foram confirmados."
+    },
+    {
+      "name": "OTCv8/otclientv8",
+      "url": "https://github.com/OTCv8/otclientv8",
+      "role": "upstream",
+      "commit": null,
+      "paths": [
+        "modules/game_bot/default_configs/vBot_4.8"
+      ],
+      "license": "MIT",
+      "redistribution": "allowed",
+      "notes": "Base estrutural. Fixar commit quando o pacote avançar para M2."
+    },
+    {
+      "name": "Tibia Wiki Brasil",
+      "url": "https://www.tibiawiki.com.br/",
+      "role": "game-data",
+      "commit": null,
+      "paths": [],
+      "license": "external-editorial-content",
+      "redistribution": "reference-only",
+      "notes": "Usada apenas para conferência cruzada de criaturas, NPCs e itens."
+    }
+  ],
+  "components": {
+    "cavebot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Nenhuma rota completa foi confirmada."
+    },
+    "targetbot": {
+      "status": "referenced",
+      "path": null,
+      "notes": "Referência contém Werehyaena e Werehyaena Shaman com lureCount 3."
+    },
+    "attackbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Não será criado antes da auditoria de resistências, spells e cooldowns."
+    },
+    "healbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Pendente."
+    },
+    "supplies": {
+      "status": "missing",
+      "path": null,
+      "notes": "NPCs, itens, mínimos e máximos não auditados."
+    },
+    "refill": {
+      "status": "missing",
+      "path": null,
+      "notes": "Cidade inicial, banco, NPCs e retorno não confirmados."
+    },
+    "rollback": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será produzido junto ao instalador somente após M3."
+    }
+  },
+  "changes": [],
+  "tests": [
+    {
+      "name": "source-audit",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "name": "license-audit",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "name": "route-discovery",
+      "status": "pending",
+      "evidence": null
+    }
+  ],
+  "safety": {
+    "backupRequired": true,
+    "rollbackRequired": true,
+    "modulesOffAfterInstall": true,
+    "secretsProhibited": true,
+    "manualCheckpoints": []
+  }
+}
