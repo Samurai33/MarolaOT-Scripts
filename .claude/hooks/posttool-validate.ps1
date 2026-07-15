@@ -35,7 +35,7 @@ try {
                 [ref]$errors
             ) | Out-Null
             if ($errors.Count -gt 0) {
-                throw ($errors | ForEach-Object Message) -join '; '
+                throw (($errors | ForEach-Object Message) -join '; ')
             }
             Write-Output "Parsed PowerShell: $filePath"
         }
