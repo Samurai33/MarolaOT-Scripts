@@ -1,0 +1,14 @@
+{
+  "supplies": {
+    "currentProfile": "Example",
+    "Example": {
+      "items": {},
+      "capSwitch": true,
+      "capValue": "300",
+      "staminaSwitch": false,
+      "staminaValue": "850",
+      "SoftBoots": false,
+      "imbues": false
+    }
+  }
+}

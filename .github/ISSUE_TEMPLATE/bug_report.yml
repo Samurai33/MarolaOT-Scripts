@@ -1,0 +1,22 @@
+name: Bug report
+about: Relatar comportamento incorreto em um script
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Descrição
+      description: O que aconteceu?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Evidências sanitizadas
+      description: Remova senhas, tokens, IPs e dados pessoais.
+  - type: input
+    attributes:
+      label: Versão do MarolaOT/vBot

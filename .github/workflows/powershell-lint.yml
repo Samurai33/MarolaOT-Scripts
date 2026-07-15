@@ -1,0 +1,26 @@
+name: PowerShell Analysis
+
+on:
+  push:
+    paths:
+      - '**/*.ps1'
+      - '**/*.psm1'
+  pull_request:
+    paths:
+      - '**/*.ps1'
+      - '**/*.psm1'
+
+jobs:
+  analyze:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+      - name: Analyze scripts
+        shell: pwsh
+        run: |
+          $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse -Severity Warning,Error
+          $results | Format-Table -AutoSize
+          if ($results) { throw 'PSScriptAnalyzer found issues.' }

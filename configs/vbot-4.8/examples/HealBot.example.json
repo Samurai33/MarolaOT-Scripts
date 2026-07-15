@@ -1,0 +1,11 @@
+{
+  "currentHealBotProfile": 1,
+  "ConditionPanel": { "enabled": false },
+  "healbot": [
+    { "enabled": false, "spellTable": [], "itemTable": [], "name": "Profile #1", "Visible": true, "OldSchool": false, "Cooldown": true, "Interval": true, "Conditions": true, "Delay": true, "MessageDelay": false },
+    { "enabled": false, "spellTable": [], "itemTable": [], "name": "Profile #2", "Visible": true, "OldSchool": false, "Cooldown": true, "Interval": true, "Conditions": true, "Delay": true, "MessageDelay": false },
+    { "enabled": false, "spellTable": [], "itemTable": [], "name": "Profile #3", "Visible": true, "OldSchool": false, "Cooldown": true, "Interval": true, "Conditions": true, "Delay": true, "MessageDelay": false },
+    { "enabled": false, "spellTable": [], "itemTable": [], "name": "Profile #4", "Visible": true, "OldSchool": false, "Cooldown": true, "Interval": true, "Conditions": true, "Delay": true, "MessageDelay": false },
+    { "enabled": false, "spellTable": [], "itemTable": [], "name": "Profile #5", "Visible": true, "OldSchool": false, "Cooldown": true, "Interval": true, "Conditions": true, "Delay": true, "MessageDelay": false }
+  ]
+}

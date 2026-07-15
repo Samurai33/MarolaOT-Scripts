@@ -1,0 +1,17 @@
+name: Feature request
+about: Sugerir novo script ou melhoria
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Problema
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Solução proposta
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Riscos e rollback
