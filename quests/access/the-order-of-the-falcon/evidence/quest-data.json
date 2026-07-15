@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "1.0.0",
+  "quest": {
+    "name": "The Order of the Falcon",
+    "parentQuest": "The Secret Library",
+    "missionId": 10464,
+    "questlineStorage": "Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.Questline",
+    "progressStorage": "Storage.Quest.U11_80.TheSecretLibrary.FalconBastion.KillingBosses",
+    "minimumLevel": 250,
+    "recommendedLevel": 300,
+    "recommendedPartySize": 5,
+    "purpose": "liberar e concluir o conteúdo principal do Falcon Bastion"
+  },
+  "requirements": {
+    "quests": [
+      "The New Frontier"
+    ],
+    "items": [
+      {
+        "name": "Bucket",
+        "serverItemId": null,
+        "status": "verify-on-marolaot"
+      },
+      {
+        "name": "Chalk",
+        "serverItemId": null,
+        "status": "verify-on-marolaot"
+      },
+      {
+        "name": "Bucket Filled with Chalk (Falcon)",
+        "serverItemId": null,
+        "status": "created-during-manual-ritual"
+      }
+    ],
+    "conditions": [
+      "ritual realizado durante o período noturno do jogo",
+      "supplies apropriados para Falcon Knights, Falcon Paladins e bosses",
+      "espaço e capacidade suficientes"
+    ]
+  },
+  "editorialStartReference": {
+    "city": "Edron",
+    "position": {
+      "x": 33210,
+      "y": 31749,
+      "z": 7
+    },
+    "status": "editorial-reference-only",
+    "notes": "A posição precisa ser confirmada no mapa do MarolaOT antes de virar waypoint."
+  },
+  "stages": [
+    {
+      "id": "preflight",
+      "type": "validation",
+      "automation": "safe-after-local-validation",
+      "manualCheckpoint": true,
+      "objective": "Confirmar requisito, itens, estado da quest, horário e retorno seguro."
+    },
+    {
+      "id": "edron-to-old-outpost",
+      "type": "navigation",
+      "automation": "capture-required",
+      "manualCheckpoint": false,
+      "objective": "Sair de Edron e alcançar o antigo posto da Falcon Order."
+    },
+    {
+      "id": "chalk-preparation-and-ritual",
+      "type": "item-use",
+      "automation": "manual-only",
+      "manualCheckpoint": true,
+      "objective": "Preparar o bucket e executar o ritual no símbolo durante a noite."
+    },
+    {
+      "id": "falcon-bastion-entry",
+      "type": "navigation",
+      "automation": "capture-required",
+      "manualCheckpoint": true,
+      "objective": "Entrar no Falcon Bastion e confirmar a revisão do mapa."
+    },
+    {
+      "id": "intermediate-boss-chain",
+      "type": "combat",
+      "automation": "manual-only",
+      "manualCheckpoint": true,
+      "objective": "Derrotar os cinco encontros que avançam KillingBosses de 1 a 5."
+    },
+    {
+      "id": "oberon-access",
+      "type": "navigation-and-lever",
+      "automation": "manual-only",
+      "manualCheckpoint": true,
+      "objective": "Acessar portal e alavanca somente após KillingBosses >= 5."
+    },
+    {
+      "id": "grand-master-oberon",
+      "type": "boss-combat",
+      "automation": "manual-only",
+      "manualCheckpoint": true,
+      "objective": "Executar debate e combate manualmente; concluir a quest."
+    }
+  ],
+  "bossProgression": [
+    {
+      "order": 1,
+      "name": "Grand Commander Soeren",
+      "storageValue": 1,
+      "manual": true
+    },
+    {
+      "order": 2,
+      "name": "Preceptor Lazare",
+      "storageValue": 2,
+      "manual": true
+    },
+    {
+      "order": 3,
+      "name": "Grand Chaplain Gaunder",
+      "storageValue": 3,
+      "manual": true
+    },
+    {
+      "order": 4,
+      "name": "Grand Canon Dominus",
+      "storageValue": 4,
+      "manual": true
+    },
+    {
+      "order": 5,
+      "name": "Dazed Leaf Golem",
+      "storageValue": 5,
+      "manual": true
+    },
+    {
+      "order": 6,
+      "name": "Grand Master Oberon",
+      "storageValue": 6,
+      "manual": true,
+      "setsQuestlineAtLeast": 2
+    }
+  ],
+  "serverGates": {
+    "doors": [
+      {
+        "position": { "x": 33376, "y": 31335, "z": 3 },
+        "minimumKillingBosses": 1
+      },
+      {
+        "position": { "x": 33371, "y": 31349, "z": 4 },
+        "minimumKillingBosses": 2
+      },
+      {
+        "position": { "x": 33376, "y": 31349, "z": 4 },
+        "minimumKillingBosses": 2
+      },
+      {
+        "position": { "x": 33375, "y": 31346, "z": 5 },
+        "minimumKillingBosses": 2
+      },
+      {
+        "position": { "x": 33363, "y": 31346, "z": 7 },
+        "minimumKillingBosses": 4
+      },
+      {
+        "position": { "x": 33366, "y": 31343, "z": 7 },
+        "minimumKillingBosses": 4
+      }
+    ],
+    "boats": [
+      {
+        "from": { "x": 33373, "y": 31309, "z": 7 },
+        "to": { "x": 33382, "y": 31292, "z": 7 },
+        "minimumKillingBosses": 3
+      },
+      {
+        "from": { "x": 33382, "y": 31294, "z": 7 },
+        "to": { "x": 33374, "y": 31310, "z": 7 },
+        "minimumKillingBosses": 3
+      },
+      {
+        "from": { "x": 33344, "y": 31348, "z": 7 },
+        "to": { "x": 33326, "y": 31352, "z": 7 },
+        "minimumKillingBosses": 3
+      },
+      {
+        "from": { "x": 33328, "y": 31352, "z": 7 },
+        "to": { "x": 33346, "y": 31348, "z": 7 },
+        "minimumKillingBosses": 3
+      }
+    ],
+    "oberonEntrance": {
+      "position": { "x": 33310, "y": 31325, "z": 8 },
+      "exit": { "x": 33329, "y": 31333, "z": 9 },
+      "minimumKillingBosses": 5,
+      "manual": true
+    }
+  },
+  "oberon": {
+    "name": "Grand Master Oberon",
+    "spawn": { "x": 33365, "y": 31318, "z": 9 },
+    "stagingTeleport": { "x": 33363, "y": 31341, "z": 9 },
+    "fightTeleport": { "x": 33364, "y": 31322, "z": 9 },
+    "exit": { "x": 33297, "y": 31285, "z": 9 },
+    "maximumPlayers": 5,
+    "cooldownSeconds": 72000,
+    "cooldownHours": 20,
+    "leverActionId": 57605,
+    "manual": true,
+    "debateAutomationProhibited": true
+  },
+  "recoveryRules": [
+    "Se o storage não avançar após um boss, parar e não forçar portas ou barcos.",
+    "Se uma coordenada não existir na revisão do MarolaOT, interromper a captura e registrar divergência.",
+    "Se o ritual consumir o item sem liberar acesso, não repetir automaticamente.",
+    "Se houver cooldown do Oberon, retornar sem tentar contornar a trava.",
+    "Nunca executar diálogo de debate por macro nesta primeira versão."
+  ]
+}

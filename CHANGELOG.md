@@ -22,6 +22,9 @@ Todas as mudanças relevantes serão documentadas neste arquivo.
 - Pacote documental inicial da Cobra Tower para consolidação M7.
 - Manifesto M1 e documentação de pesquisa de Werehyaenas.
 - Padrão seguro de automação assistida para quests.
+- Primeiro pacote de quest assistida: The Order of the Falcon em M2.
+- Checklist por etapas, source lock, evidências de storages e plano de captura da rota Falcon.
+- Workflow de segurança que impede CaveBot, instalador e automação de boss enquanto a quest estiver em M2.
 
 ### Changed
 
@@ -29,8 +32,10 @@ Todas as mudanças relevantes serão documentadas neste arquivo.
 - Catálogo atualizado para distinguir ideia, referência, adaptação, teste e release.
 - Summer Court reclassificada como pesquisa M0/M1, sem rota executável ou status inflado.
 - Expansão de hunts passou a exigir evidência, commit, licença e componentes mínimos.
+- Falcon Bastion Access foi substituída pela quest auditada The Order of the Falcon no catálogo de quests.
 
 ### Security
 
 - Redistribuição de conteúdo comunitário passou a depender de auditoria de licença.
 - Novos pacotes exigem backup, rollback, módulos desligados e proibição de segredos no manifesto.
+- Ritual, minibosses, barcos não validados, portal, alavanca e Grand Master Oberon são checkpoints manuais obrigatórios.

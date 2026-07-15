@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "lockedAt": "2026-07-15",
+  "package": "the-order-of-the-falcon",
+  "sources": [
+    {
+      "name": "Tibia Wiki Brasil — The Order of the Falcon Quest",
+      "type": "editorial-reference",
+      "url": "https://www.tibiawiki.com.br/index.php?title=The_Order_of_the_Falcon_Quest&oldid=401317",
+      "revision": "401317",
+      "redistribution": "reference-only",
+      "verifiedFacts": [
+        "quest curta com level mínimo 250 e recomendação 300",
+        "The New Frontier é requisito",
+        "início editorial em Edron próximo de 33210,31749,7",
+        "ritual exige período noturno do jogo",
+        "Bucket e Chalk são necessários para preparar o ritual",
+        "cinco encontros intermediários antecedem Grand Master Oberon",
+        "sala final suporta grupo de até cinco jogadores"
+      ],
+      "contentPolicy": "Somente fatos e estrutura operacional são parafraseados. Texto integral, imagens e mapas editoriais não são redistribuídos."
+    },
+    {
+      "name": "OpenTibiaBR Canary",
+      "type": "primary-game-data",
+      "repository": "opentibiabr/canary",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "license": "GPL-2.0",
+      "redistribution": "reference-only",
+      "files": [
+        {
+          "path": "data-otservbr-global/lib/core/quests/catalog/049_the_secret_library.lua",
+          "blobSha1": "289189dd2291d5be5ec8c0fb47910b734e635fcb",
+          "purpose": "Questline, mission id 10464 e estados da missão."
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_secret_library_quest/creaturescripts_kill.lua",
+          "blobSha1": "c7e8823702202ade0ee268ffa09cc3eb8eae3574",
+          "purpose": "Ordem dos cinco bosses intermediários e conclusão por Oberon."
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/actions_doors.lua",
+          "blobSha1": "34a56f1d74e68eb53e0518d9248a8dc336c80f04",
+          "purpose": "Gates de portas e barcos baseados no storage KillingBosses."
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/actions_oberonLever.lua",
+          "blobSha1": "e736be79de5303ba5b1f1370d3cc0ce79a64bb01",
+          "purpose": "Sala, posições, limite de cinco jogadores e cooldown de 20 horas."
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_secret_library_quest/the_order_of_the_falcon/movements_bossEntrance.lua",
+          "blobSha1": "f6068da667ba3967f4608c72c6417dd5c1d7340d",
+          "purpose": "Entrada final condicionada a KillingBosses >= 5 e verificação de cooldown."
+        }
+      ]
+    }
+  ],
+  "readyRouteSearch": {
+    "status": "not-found",
+    "scope": [
+      "GitHub code search",
+      "repositórios públicos de OTClient/vBot",
+      "nomes The Order of the Falcon, Falcon Bastion, Oberon e variações",
+      "coordenadas e nomes de NPCs conhecidos"
+    ],
+    "result": "Foram encontrados scripts de servidor e dados de quest, mas nenhum CaveBot completo com origem, commit e licença auditáveis.",
+    "decision": "Criar rota própria por captura controlada no MarolaOT, dividida em segmentos e com checkpoints manuais."
+  },
+  "unverified": [
+    "IDs exatos de Bucket, Chalk e Bucket Filled with Chalk no MarolaOT",
+    "posição e comportamento do ritual na revisão específica do MarolaOT",
+    "rota Edron depot até o antigo posto da Falcon Order",
+    "coordenadas internas adaptadas à revisão do mapa do servidor",
+    "estado atual dos storages do personagem",
+    "compatibilidade dos diálogos e objetos com a implementação do MarolaOT"
+  ],
+  "prohibitedUntilVerified": [
+    "automatizar uso do bucket no ritual",
+    "automatizar minibosses",
+    "automatizar barcos e portas sem validação do storage",
+    "automatizar portal ou alavanca do Oberon",
+    "automatizar debate ou combate contra Oberon"
+  ]
+}
