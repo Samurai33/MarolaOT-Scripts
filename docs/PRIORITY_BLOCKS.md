@@ -35,12 +35,14 @@ Este documento organiza a evolução do **MarolaOT-Scripts** em blocos sequencia
 - [x] Blocos de prioridade e modelo de maturidade.
 - [x] Schema do manifesto de origem.
 - [x] Exemplo de manifesto válido.
-- [ ] Validação automática do manifesto no CI.
-- [ ] Template de issue para nova referência de hunt/quest.
+- [x] Validação automática do manifesto no CI.
+- [x] Template de issue para nova referência de hunt/quest.
 
 ### Critério de saída
 
 Todo novo pacote deve possuir um `source-manifest.json` válido antes de receber arquivos de CaveBot, TargetBot ou configuração.
+
+**Status:** concluído.
 
 ## P1 — Consolidar Cobra Tower como release de referência
 
@@ -50,7 +52,7 @@ Todo novo pacote deve possuir um `source-manifest.json` válido antes de receber
 
 - [ ] Reorganizar Cobra Tower em pacote autocontido.
 - [ ] Incluir CaveBot, TargetBot, configs, instalador, testes e rollback.
-- [ ] Registrar fonte comunitária e commit fixo.
+- [x] Registrar fonte comunitária e commit fixo.
 - [ ] Documentar diferenças entre upstream e MarolaOT.
 - [ ] Adicionar checksums e inventário dos arquivos instalados.
 - [ ] Criar release `cobra-tower-v1.0.0`.
@@ -58,6 +60,8 @@ Todo novo pacote deve possuir um `source-manifest.json` válido antes de receber
 ### Critério de saída
 
 Instalação e restauração reproduzíveis a partir de um clone limpo, com todos os módulos desligados ao final.
+
+**Status:** iniciado com `README.md` e `source-manifest.json` no pacote Cobra Tower.
 
 ## P2 — Werehyaenas: reconstrução orientada por referência
 
@@ -71,7 +75,7 @@ Instalação e restauração reproduzíveis a partir de um clone limpo, com todo
 
 ### Entregáveis
 
-- [ ] Criar manifesto de origem com commit fixo.
+- [x] Criar manifesto de origem com commit fixo.
 - [ ] Auditar licença do material comunitário.
 - [ ] Localizar CaveBot correspondente ou documentar captura própria.
 - [ ] Mapear NPCs, supplies, acesso, entrada, loop e retorno.
@@ -82,6 +86,8 @@ Instalação e restauração reproduzíveis a partir de um clone limpo, com todo
 ### Critério de saída
 
 Werehyaenas só entra em M3 quando CaveBot, refill e dependências estiverem documentados; possuir apenas TargetBot mantém o pacote em M2.
+
+**Status:** iniciado em M1, sem alterações no cliente.
 
 ## P3 — Validação estrutural e CI
 
@@ -128,7 +134,7 @@ Nenhum fluxo de quest executa decisão irreversível sem confirmação manual ex
 
 ### Candidatos atuais
 
-- Werehyaenas — M2 parcial.
+- Werehyaenas — M1/M2 parcial.
 - Summer Court — M0/M1, sem pacote comunitário completo confirmado.
 - Asura Mirror — M0/M1.
 - Winter Court — M0/M1.
