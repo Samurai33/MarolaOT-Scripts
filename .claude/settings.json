@@ -27,18 +27,13 @@
       "Bash(git clean -fd *)",
       "Bash(git clean -xfd *)",
       "Bash(rm -rf *)",
-      "PowerShell(Remove-Item * -Recurse * -Force *)",
-      "PowerShell(git push --force *)",
-      "PowerShell(git reset --hard *)",
-      "PowerShell(git clean -fd *)"
+      "Bash(powershell *Remove-Item* -Recurse* -Force*)",
+      "Bash(pwsh *Remove-Item* -Recurse* -Force*)"
     ],
     "ask": [
       "Bash(git push *)",
       "Bash(git merge *)",
-      "Bash(git rebase *)",
-      "PowerShell(git push *)",
-      "PowerShell(git merge *)",
-      "PowerShell(git rebase *)"
+      "Bash(git rebase *)"
     ]
   },
   "autoMemoryEnabled": true
