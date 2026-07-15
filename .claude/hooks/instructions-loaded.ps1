@@ -39,9 +39,11 @@ $record = [ordered]@{
     timestampUtc = [DateTime]::UtcNow.ToString('o')
     event = 'InstructionsLoaded'
     cwd = Get-PropertyText -Object $inputObject -Name 'cwd'
-    source = Get-PropertyText -Object $inputObject -Name 'source'
     filePath = Get-PropertyText -Object $inputObject -Name 'file_path'
-    reason = Get-PropertyText -Object $inputObject -Name 'reason'
+    memoryType = Get-PropertyText -Object $inputObject -Name 'memory_type'
+    loadReason = Get-PropertyText -Object $inputObject -Name 'load_reason'
+    triggerFilePath = Get-PropertyText -Object $inputObject -Name 'trigger_file_path'
+    parentFilePath = Get-PropertyText -Object $inputObject -Name 'parent_file_path'
 }
 
 $record | ConvertTo-Json -Compress |
