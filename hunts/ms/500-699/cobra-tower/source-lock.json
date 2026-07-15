@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": "cobra-tower-max-dps-v2",
+  "source": {
+    "repository": "https://github.com/Kolczan/Tibia-Scripts",
+    "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
+    "license": "not-confirmed",
+    "redistribution": "reference-only",
+    "notes": "The upstream files are fetched directly from the pinned commit and are not stored in this repository."
+  },
+  "files": [
+    {
+      "id": "cavebot",
+      "path": "otclientv8/bot/MS/cavebot_configs/[550+] Cobra Tower.cfg",
+      "downloadUrl": "https://raw.githubusercontent.com/Kolczan/Tibia-Scripts/52e6baaa1a32448abe88476fca53dcd466d7678e/otclientv8/bot/MS/cavebot_configs/%5B550%2B%5D%20Cobra%20Tower.cfg",
+      "gitBlobSha1": "eb43c911e3791866e146d0202761bb684c600315"
+    },
+    {
+      "id": "targetbot",
+      "path": "otclientv8/bot/MS/targetbot_configs/cobra.json",
+      "downloadUrl": "https://raw.githubusercontent.com/Kolczan/Tibia-Scripts/52e6baaa1a32448abe88476fca53dcd466d7678e/otclientv8/bot/MS/targetbot_configs/cobra.json",
+      "gitBlobSha1": "82f71953506b1a27dc6007f7632a2b5361a99251"
+    }
+  ]
+}
