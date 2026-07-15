@@ -33,13 +33,13 @@ Anthropic recommends keeping `CLAUDE.md` concise and under 200 lines. Detailed p
 9. Run `/token-audit` on repeated workflows.
 10. Open/update the PR with exact evidence.
 
-## Verification loop
+## Verification and recurring loops
 
-A good task includes a check Claude can run. The loop is:
+A good task includes a check Claude can run. The quality loop is:
 
 `implement → run narrow check → read failure → fix root cause → rerun → regression checks → fresh-context review`
 
-Use `/quality-loop` for a bounded version. It stops after five iterations or a real manual blocker.
+Use `/quality-loop` for the bounded repair workflow. Use the bundled `/loop` only for controlled recurring read-only checks during an active session. The differences and safety boundaries are documented in [`LOOPS.md`](LOOPS.md).
 
 ## Workspace trust
 
@@ -56,7 +56,8 @@ Repository skills, hooks, and settings are an execution surface. Review them bef
 - `/agents`: subagent management.
 - `/clear`: fresh context for unrelated work.
 - `/compact <focus>`: focused history summarization.
-- `/recap`: display summary without replacing history/cache prefix.
+
+Confirm installed bundled-command syntax through `/help` after Claude Code upgrades.
 
 ## Official references
 
