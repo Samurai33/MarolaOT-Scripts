@@ -3,10 +3,12 @@
 
   # MarolaOT Scripts
 
-  **Automação reproduzível, diagnóstico e manutenção segura para MarolaOT, OTClient e vBot 4.8.**
+  **Automação reproduzível, pesquisa auditável e manutenção segura para MarolaOT, OTClient e vBot 4.8.**
 
   [![PowerShell Analysis](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/powershell-lint.yml/badge.svg?branch=main)](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/powershell-lint.yml)
   [![Validate JSON](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/validate-json.yml/badge.svg?branch=main)](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/validate-json.yml)
+  [![Source Manifests](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/validate-source-manifests.yml/badge.svg?branch=main)](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/validate-source-manifests.yml)
+  [![Werehyaenas Research](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/werehyaenas-research.yml/badge.svg?branch=main)](https://github.com/Samurai33/MarolaOT-Scripts/actions/workflows/werehyaenas-research.yml)
   [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
   [![vBot](https://img.shields.io/badge/vBot-4.8-5c2d91.svg?logo=lua&logoColor=white)](https://github.com/OTCv8/otclientv8)
   [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE.svg?logo=powershell&logoColor=white)](scripts/windows/vbot)
@@ -20,28 +22,122 @@
 
 ## Sobre o projeto
 
-O **MarolaOT-Scripts** centraliza automações para o ecossistema MarolaOT com quatro objetivos:
+O **MarolaOT-Scripts** centraliza scripts, pesquisas e pacotes para o ecossistema MarolaOT com cinco objetivos:
 
 - instalar configurações de forma reproduzível;
 - validar arquivos antes de abrir ou operar o cliente;
 - criar backup antes de qualquer alteração;
-- permitir rollback sem depender de memória ou intervenção improvisada.
+- permitir rollback sem depender de memória ou intervenção improvisada;
+- separar claramente pesquisa, adaptação, teste e release.
 
-O projeto segue uma política de **evidência antes de implementação**. Nenhuma hunt ou quest é considerada em desenvolvimento apenas por possuir uma pasta ou uma ideia. Para avançar, o pacote precisa registrar fonte, commit, licença, componentes disponíveis e lacunas conhecidas.
+O projeto segue uma política de **evidência antes de implementação**. Uma hunt não se torna “em desenvolvimento” apenas por possuir um nome, uma pasta ou um TargetBot isolado. Para avançar, cada pacote registra fonte, commit, hash, licença, componentes disponíveis, lacunas e evidências.
 
 > [!IMPORTANT]
 > Scripts de configuração terminam com CaveBot, TargetBot, AttackBot e HealBot desligados. A ativação ocorre manualmente e por etapas.
+
+> [!WARNING]
+> A licença MIT deste repositório cobre somente o conteúdo original do MarolaOT-Scripts. Materiais externos mantêm as licenças e restrições de suas fontes.
 
 ## Estado atual
 
 | Maturidade | Pacote | Estado | Próxima ação |
 |---:|---|---|---|
-| **M6** | Cobra Tower — MS 550+ | Rota, refill, TargetBot e combate adaptados e funcionais | Consolidar como release M7 |
-| **M1/M2 parcial** | Werehyaenas — MS 300+ | TargetBot comunitário localizado; rota e refill não confirmados | Auditar licença e localizar CaveBot completo |
-| **M0/M1** | Summer Court — MS 500+ | Pesquisa; nenhum pacote completo confirmado | Continuar busca sem inventar rota |
+| **M6** | Cobra Tower — MS 550+ | Release candidate autocontido e CI verde no PR #3 | Instalação limpa, dry-run, rollback e release M7 |
+| **M2** | Werehyaenas — MS 300+ | Fontes, hashes, licença, criaturas e acesso auditados; sem CaveBot/refill | Encontrar rota reproduzível ou capturar uma rota própria documentada |
+| **M0/M1** | Summer Court — MS 500+ | Nenhum pacote completo confirmado | Continuar pesquisa sem inventar rota |
 | **M0** | Outras hunts e quests | Backlog orientado por evidência | Selecionar pela qualidade das fontes |
 
 A matriz completa está em [`docs/CATALOG.md`](docs/CATALOG.md).
+
+## Princípios
+
+1. **Evidência antes da automação.**
+2. **Commit e hash antes da adaptação.**
+3. **Licença antes da redistribuição.**
+4. **Backup antes da mudança.**
+5. **Rollback antes da confiança.**
+6. **Bots desligados por padrão.**
+7. **Status honesto em cada estágio.**
+
+## Modelo de maturidade
+
+| Nível | Nome | Critério resumido |
+|---:|---|---|
+| M0 | Ideia | Sem fonte técnica suficiente |
+| M1 | Referência encontrada | Fonte localizada, ainda não auditada |
+| M2 | Referência auditada | Commit, arquivos, hashes, licença e dependências registrados |
+| M3 | Adaptado | Conteúdo convertido para MarolaOT/vBot 4.8 |
+| M4 | Teste local | JSONs e combate validados fora da rota |
+| M5 | Rota controlada | Entrada, refill, loop e retorno testados |
+| M6 | Validado | Volta completa, backup e rollback confirmados |
+| M7 | Release | Pacote versionado, checksums e notas publicados |
+
+Detalhes: [`docs/PRIORITY_BLOCKS.md`](docs/PRIORITY_BLOCKS.md).
+
+## Pipeline de portabilidade
+
+```mermaid
+flowchart LR
+    A[Referência pública ou captura própria] --> B[Manifesto e source lock]
+    B --> C{Commit, hash e licença auditados?}
+    C -- Não --> D[M1: referência apenas]
+    C -- Sim --> E{CaveBot + TargetBot + refill?}
+    E -- Não --> F[M2: pesquisa auditada]
+    E -- Sim --> G[M3: adaptação vBot 4.8]
+    G --> H[M4: teste local]
+    H --> I[M5: rota controlada]
+    I --> J[M6: validação completa]
+    J --> K[M7: release versionada]
+```
+
+## Pacotes em destaque
+
+### Cobra Tower MAX DPS v2
+
+A Cobra Tower é o pacote operacional mais maduro do projeto. A configuração funcional inclui:
+
+- Rage of the Skies com trava alinhada ao cooldown;
+- Energy Wave e Great Fire Wave como preenchimento de rotação;
+- GFB para grupos;
+- Ultimate Energy Strike e SD para alvo isolado;
+- supplies de UMP, GFB e SD;
+- TargetBot dedicado às Cobras;
+- looting interno desligado para uso do lootbag do servidor;
+- refill integrado;
+- backup e validação.
+
+| Prioridade | Condição | Ação | Trava local |
+|---:|---|---|---:|
+| 1 | 6+ Cobras, HP ≥ 35% | Rage of the Skies | 40,5 s |
+| 2 | 3+ alinhadas | Energy Wave | 8,25 s |
+| 3 | 3+ alinhadas | Great Fire Wave | 4,25 s |
+| 4 | 2+ no melhor tile | Great Fireball Rune | 2 s |
+| 5 | Alvo isolado, HP ≥ 30% | Ultimate Energy Strike | 30,5 s |
+| 6 | Alvo restante | Sudden Death Rune | 2 s |
+
+O release candidate está no [PR #3](https://github.com/Samurai33/MarolaOT-Scripts/pull/3).
+
+### Werehyaenas — pesquisa M2
+
+O pacote [`hunts/ms/300-499/werehyaenas`](hunts/ms/300-499/werehyaenas) contém somente pesquisa auditável:
+
+- TargetBot comunitário fixado por commit e Git blob SHA-1;
+- licença comunitária classificada como não declarada;
+- dados primários das duas criaturas;
+- storage e posições do atalho Ancient Feud;
+- relatório da busca de CaveBot/refill;
+- CI que impede código executável prematuro.
+
+A pesquisa concluiu que:
+
+- gelo possui vantagem nos dados auditados;
+- energia causa dano normal;
+- death é viável como single-target;
+- fogo e terra são resistidos;
+- nenhum CaveBot/refill público e reproduzível foi confirmado.
+
+> [!NOTE]
+> M2 não é uma hunt pronta. O pacote não contém CaveBot, TargetBot copiado, AttackBot, instalador ou rollback.
 
 ## O que está incluído
 
@@ -66,9 +162,10 @@ A matriz completa está em [`docs/CATALOG.md`](docs/CATALOG.md).
 ### Governança de pacotes
 
 - manifesto obrigatório de origem;
-- registro de repositório, commit, arquivos e licença;
+- source lock com commits e hashes;
 - níveis de maturidade M0–M7;
 - critérios de entrada e saída por prioridade;
+- CI específico por pacote;
 - separação entre referência, adaptação, teste e release.
 
 ## O que o projeto não faz
@@ -78,64 +175,8 @@ A matriz completa está em [`docs/CATALOG.md`](docs/CATALOG.md).
 - não republica código de terceiros sem avaliar licença;
 - não armazena credenciais, tokens, IPs privados ou dumps reais;
 - não automatiza escolhas irreversíveis de quests sem checkpoint manual;
-- não ativa bots automaticamente após a instalação.
-
-## Pipeline de portabilidade
-
-```mermaid
-flowchart LR
-    A[Referência pública ou captura própria] --> B[Manifesto de origem]
-    B --> C{Licença e commit auditados?}
-    C -- Não --> D[Referência apenas]
-    C -- Sim --> E{CaveBot + TargetBot + refill?}
-    E -- Não --> F[Pacote parcial]
-    E -- Sim --> G[Adaptação vBot 4.8]
-    G --> H[Validação estática]
-    H --> I[Teste local]
-    I --> J[Rota controlada]
-    J --> K[Validação completa]
-    K --> L[Release versionada]
-```
-
-## Modelo de maturidade
-
-| Nível | Nome | Critério resumido |
-|---:|---|---|
-| M0 | Ideia | Sem fonte técnica suficiente |
-| M1 | Referência encontrada | Fonte localizada |
-| M2 | Referência auditada | Commit, arquivos, licença e dependências registrados |
-| M3 | Adaptado | Conteúdo convertido para MarolaOT/vBot 4.8 |
-| M4 | Teste local | JSONs e combate validados fora da rota |
-| M5 | Rota controlada | Entrada, refill, loop e retorno testados |
-| M6 | Validado | Volta completa, backup e rollback confirmados |
-| M7 | Release | Pacote versionado, checksums e notas publicados |
-
-Detalhes e critérios: [`docs/PRIORITY_BLOCKS.md`](docs/PRIORITY_BLOCKS.md).
-
-## Pacote de referência: Cobra Tower MAX DPS v2
-
-A Cobra Tower é o pacote operacional mais maduro do projeto. A adaptação inclui:
-
-- Rage of the Skies com trava local alinhada ao cooldown;
-- Energy Wave e Great Fire Wave como preenchimento de rotação;
-- GFB para grupos;
-- Ultimate Energy Strike e SD para alvo isolado;
-- supplies de UMP, GFB e SD;
-- TargetBot dedicado às Cobras;
-- looting interno desligado para uso do lootbag do servidor;
-- refill integrado à rota;
-- instalador com backup e validação.
-
-### Rotação ofensiva
-
-| Prioridade | Condição | Ação | Trava local |
-|---:|---|---|---:|
-| 1 | 6+ Cobras, HP ≥ 35% | Rage of the Skies | 40,5 s |
-| 2 | 3+ alinhadas | Energy Wave | 8,25 s |
-| 3 | 3+ alinhadas | Great Fire Wave | 4,25 s |
-| 4 | 2+ no melhor tile | Great Fireball Rune | 2 s |
-| 5 | Alvo isolado, HP ≥ 30% | Ultimate Energy Strike | 30,5 s |
-| 6 | Alvo restante | Sudden Death Rune | 2 s |
+- não ativa bots automaticamente após instalação;
+- não promove um pacote para M3 sem rota e refill verificáveis.
 
 ## Scripts disponíveis
 
@@ -170,7 +211,7 @@ Set-ExecutionPolicy -Scope Process Bypass -Force
 .\scripts\windows\vbot\Test-VBotJson.ps1
 ```
 
-### Instalar Cobra Tower MAX DPS v2
+### Instalar a configuração atual da Cobra Tower
 
 ```powershell
 .\scripts\windows\vbot\Set-CobraTowerMaxDpsV2.ps1
@@ -189,33 +230,12 @@ Outro perfil pode ser informado explicitamente:
   -ProfilePath "C:\caminho\para\vBot_4.8"
 ```
 
-## Teste local seguro
-
-O teste de combate deve ocorrer fora de protection zone, com CaveBot desligado.
-
-```text
-/i 3191,300
-/i 3155,300
-/i 23373,200
-/m Cobra Assassin,3,,2
-```
-
-Sequência recomendada:
-
-1. iniciar com todos os módulos desligados;
-2. ativar AttackBot e conferir o perfil selecionado;
-3. ativar TargetBot somente durante o teste controlado;
-4. verificar runas, waves, cooldowns e cura;
-5. desligar os módulos;
-6. testar CaveBot apenas em uma etapa posterior.
-
 ## Estrutura do repositório
 
 ```text
 MarolaOT-Scripts/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows/
 ├── assets/
 ├── configs/vbot-4.8/examples/
@@ -237,64 +257,43 @@ MarolaOT-Scripts/
 └── README.md
 ```
 
-## Manifesto de origem
+## Manifesto e source lock
 
 Todo novo pacote deve possuir um `source-manifest.json` compatível com:
 
 - [`schemas/source-manifest.schema.json`](schemas/source-manifest.schema.json)
 - [`templates/source-manifest.example.json`](templates/source-manifest.example.json)
 
-O manifesto registra:
+O manifesto registra estado e componentes. O `source-lock.json` fixa:
 
-- nome, tipo, vocação e faixa do pacote;
-- versão alvo do cliente e do bot;
-- repositórios, commits e caminhos de origem;
-- licença e permissão de redistribuição;
-- componentes presentes e ausentes;
-- mudanças feitas na adaptação;
-- evidências de teste;
-- requisitos de backup, rollback e módulos desligados.
+- repositório e commit;
+- caminhos de origem;
+- hashes dos arquivos auditados;
+- licença e política de redistribuição;
+- resultado das buscas;
+- dependências e bloqueadores.
 
 ## Blocos de prioridade
 
-### P0 — Fundação e governança
-
-Manifesto, registro de fontes, maturidade, templates e validação no CI.
-
-### P1 — Cobra Tower como release de referência
-
-Reorganizar a automação funcional em um pacote autocontido e publicar `cobra-tower-v1.0.0`.
-
-### P2 — Werehyaenas orientada por evidência
-
-Auditar licença, localizar CaveBot/refill e adaptar apenas componentes confirmados.
-
-### P3 — CI e schemas avançados
-
-Validar manifestos, AttackBot, HealBot, Supplies, TargetBot e sintaxe conhecida do CaveBot.
-
-### P4 — Framework seguro de quests
-
-Checklists, storages, validação sem alteração e checkpoints manuais para ações irreversíveis.
-
-### P5 — Expansão do catálogo
-
-Selecionar novas hunts pela completude e qualidade das referências, não apenas por popularidade.
+- **P0 — concluído:** governança, manifestos, registro de fontes e CI.
+- **P1 — release candidate:** Cobra Tower em consolidação M7.
+- **P2 — M2 concluído:** Werehyaenas auditada, bloqueada por ausência de rota/refill.
+- **P3:** schemas e validação estrutural avançada.
+- **P4:** framework seguro de quests e acessos.
+- **P5:** expansão do catálogo pela qualidade das fontes.
 
 A execução detalhada está em [`docs/PRIORITY_BLOCKS.md`](docs/PRIORITY_BLOCKS.md).
 
 ## Fontes e proveniência
 
-O projeto utiliza três classes de referência:
+O projeto utiliza classes distintas de referência:
 
-1. **Upstream técnico:** [`OTCv8/otclientv8`](https://github.com/OTCv8/otclientv8), usado como base estrutural do vBot 4.8.
-2. **Conteúdo comunitário:** [`Kolczan/Tibia-Scripts`](https://github.com/Kolczan/Tibia-Scripts), usado como referência de hunts e configurações.
-3. **Documentação comunitária:** threads do OTLand para sintaxe, waypoints, labels, callbacks e padrões operacionais.
+1. **Upstream técnico:** [`OTCv8/otclientv8`](https://github.com/OTCv8/otclientv8).
+2. **Dados primários do servidor:** [`opentibiabr/canary`](https://github.com/opentibiabr/canary).
+3. **Conteúdo comunitário:** [`Kolczan/Tibia-Scripts`](https://github.com/Kolczan/Tibia-Scripts), tratado como `reference-only` enquanto não houver licença declarada.
+4. **Documentação comunitária:** fóruns e wikis usados para conferência, sem substituir fontes primárias disponíveis.
 
 O inventário auditável está em [`docs/research/SOURCE_REGISTRY.md`](docs/research/SOURCE_REGISTRY.md).
-
-> [!WARNING]
-> A licença MIT deste repositório cobre o conteúdo original do MarolaOT-Scripts. Código, rotas e dados provenientes de terceiros permanecem sujeitos às licenças e termos de suas respectivas fontes.
 
 ## Segurança operacional
 
@@ -307,18 +306,16 @@ O inventário auditável está em [`docs/research/SOURCE_REGISTRY.md`](docs/rese
 - pare quests antes de bosses, escolhas ou consumo de itens raros;
 - preserve os diretórios de backup até concluir o rollback testado.
 
-Consulte [`SECURITY.md`](SECURITY.md) para reportar problemas de forma responsável.
+Consulte [`SECURITY.md`](SECURITY.md).
 
 ## Contribuição
 
-Contribuições são bem-vindas quando preservam rastreabilidade e segurança.
-
 Antes de abrir um pull request:
 
-- adicione ou atualize o manifesto de origem;
-- indique fonte, commit e licença;
-- descreva alterações e riscos;
-- inclua procedimento de rollback;
+- adicione ou atualize o manifesto e source lock;
+- indique fonte, commit, hash e licença;
+- descreva alterações, lacunas e riscos;
+- inclua procedimento de rollback para pacotes executáveis;
 - remova dados sensíveis;
 - execute os validadores disponíveis;
 - não marque como validado algo que ainda não completou uma volta real.

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": "werehyaenas-ms",
+  "auditDate": "2026-07-15",
+  "sources": [
+    {
+      "id": "community-targetbot",
+      "repository": "Kolczan/Tibia-Scripts",
+      "url": "https://github.com/Kolczan/Tibia-Scripts",
+      "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
+      "license": {
+        "status": "not-declared",
+        "evidence": [
+          "No LICENSE file exists at the audited commit.",
+          "README.md only identifies the repository as Tibia bot scripts and contains no license grant."
+        ]
+      },
+      "redistribution": "reference-only",
+      "files": [
+        {
+          "id": "werehyaenas-targetbot",
+          "path": "otclientv8/bot/EK tsunami/targetbot_configs/Werehyaenas.json",
+          "gitBlobSha1": "edd0800b2d736adf69972f3d8033d7deaad2539a",
+          "status": "referenced"
+        },
+        {
+          "id": "repository-readme",
+          "path": "README.md",
+          "gitBlobSha1": "f94d86d7280510878b3999a5a0172339718a9d1e",
+          "status": "license-evidence"
+        }
+      ]
+    },
+    {
+      "id": "otcv8-upstream",
+      "repository": "OTCv8/otclientv8",
+      "url": "https://github.com/OTCv8/otclientv8",
+      "commit": "aacfe3f1fe4bcadb5a34ff1f36263e1c96b3dd32",
+      "license": {
+        "status": "declared",
+        "spdx": "MIT"
+      },
+      "redistribution": "allowed",
+      "files": [
+        {
+          "id": "vbot-config-loader",
+          "path": "modules/game_bot/default_configs/vBot_4.8/vBot/configs.lua",
+          "gitBlobSha1": "45cd29af7388c2b3f7b21e855a675b34936694dc",
+          "status": "audited"
+        }
+      ]
+    },
+    {
+      "id": "canary-game-data",
+      "repository": "opentibiabr/canary",
+      "url": "https://github.com/opentibiabr/canary",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "license": {
+        "status": "declared",
+        "spdx": "GPL-2.0-only"
+      },
+      "redistribution": "reference-only",
+      "files": [
+        {
+          "id": "werehyaena-monster",
+          "path": "data-otservbr-global/monster/lycanthropes/werehyaena.lua",
+          "gitBlobSha1": "62a890f771fae87fe6377ef23b767922413673f0",
+          "status": "audited"
+        },
+        {
+          "id": "werehyaena-shaman-monster",
+          "path": "data-otservbr-global/monster/lycanthropes/werehyaena_shaman.lua",
+          "gitBlobSha1": "184a4c56e05d564a9202fbe265153ee76eabc0cd",
+          "status": "audited"
+        },
+        {
+          "id": "ancient-feud-entrances",
+          "path": "data-otservbr-global/scripts/quests/grimvale/actions_ancient_feud_entrances.lua",
+          "gitBlobSha1": "df23caae4bbd06d0b91532b2e95540e22e5e88ec",
+          "status": "audited"
+        }
+      ]
+    }
+  ],
+  "routeSearch": {
+    "status": "completed-no-match",
+    "queries": [
+      "Werehyaenas",
+      "werehyaena",
+      "Werehyaena Shaman",
+      "exact TargetBot regex",
+      "Grimvale",
+      "Darashia",
+      "hyena and hyaena filename variants",
+      "Ancient Feud shortcut coordinates"
+    ],
+    "result": "No public CaveBot and refill pair was confirmed for the audited vBot/OTClient references.",
+    "excludedSources": [
+      {
+        "repository": "jobervalmagalhaes/jobscripts",
+        "reason": "Commercial catalog without downloadable route source, fixed commit for the script, or redistribution license."
+      }
+    ]
+  },
+  "accessEvidence": {
+    "storageSymbol": "Storage.Quest.U10_80.GrimvaleQuest.AncientFeudShortcut",
+    "acceptedStorageState": "value greater than or equal to zero",
+    "positions": [
+      {
+        "from": { "x": 33137, "y": 32352, "z": 5 },
+        "to": { "x": 33117, "y": 32252, "z": 10 }
+      },
+      {
+        "from": { "x": 33116, "y": 32252, "z": 10 },
+        "to": { "x": 33138, "y": 32353, "z": 5 }
+      },
+      {
+        "from": { "x": 33092, "y": 32314, "z": 11 },
+        "to": { "x": 33090, "y": 32280, "z": 12 }
+      },
+      {
+        "from": { "x": 33090, "y": 32279, "z": 12 },
+        "to": { "x": 33092, "y": 32315, "z": 11 }
+      }
+    ]
+  }
+}

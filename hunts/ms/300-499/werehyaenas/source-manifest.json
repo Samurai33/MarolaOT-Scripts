@@ -4,7 +4,7 @@
     "name": "Werehyaenas MS",
     "slug": "werehyaenas-ms",
     "type": "hunt",
-    "status": "reference-found",
+    "status": "reference-audited",
     "vocation": "Master Sorcerer",
     "levelRange": "300+"
   },
@@ -14,7 +14,7 @@
     "platform": "Windows",
     "server": "MarolaOT"
   },
-  "maturity": "M1",
+  "maturity": "M2",
   "sources": [
     {
       "name": "Kolczan/Tibia-Scripts",
@@ -22,86 +22,107 @@
       "role": "community-pack",
       "commit": "52e6baaa1a32448abe88476fca53dcd466d7678e",
       "paths": [
-        "otclientv8/bot/EK tsunami/targetbot_configs/Werehyaenas.json"
+        "otclientv8/bot/EK tsunami/targetbot_configs/Werehyaenas.json",
+        "README.md"
       ],
-      "license": "not-confirmed",
+      "license": "not-declared",
       "redistribution": "reference-only",
-      "notes": "TargetBot localizado. CaveBot e refill correspondentes não foram confirmados."
+      "notes": "TargetBot auditado e fixado por Git blob SHA-1. O commit não possui LICENSE e o README não concede permissão de redistribuição. CaveBot e refill correspondentes não foram localizados."
     },
     {
       "name": "OTCv8/otclientv8",
       "url": "https://github.com/OTCv8/otclientv8",
       "role": "upstream",
-      "commit": null,
+      "commit": "aacfe3f1fe4bcadb5a34ff1f36263e1c96b3dd32",
       "paths": [
-        "modules/game_bot/default_configs/vBot_4.8"
+        "modules/game_bot/default_configs/vBot_4.8/vBot/configs.lua"
       ],
       "license": "MIT",
       "redistribution": "allowed",
-      "notes": "Base estrutural. Fixar commit quando o pacote avançar para M2."
+      "notes": "Upstream do loader de AttackBot, HealBot e Supplies no vBot 4.8."
     },
     {
-      "name": "Tibia Wiki Brasil",
-      "url": "https://www.tibiawiki.com.br/",
+      "name": "OpenTibiaBR Canary",
+      "url": "https://github.com/opentibiabr/canary",
       "role": "game-data",
-      "commit": null,
-      "paths": [],
-      "license": "external-editorial-content",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "paths": [
+        "data-otservbr-global/monster/lycanthropes/werehyaena.lua",
+        "data-otservbr-global/monster/lycanthropes/werehyaena_shaman.lua",
+        "data-otservbr-global/scripts/quests/grimvale/actions_ancient_feud_entrances.lua"
+      ],
+      "license": "GPL-2.0-only",
       "redistribution": "reference-only",
-      "notes": "Usada apenas para conferência cruzada de criaturas, NPCs e itens."
+      "notes": "Fonte primária auditada para HP, ataques, elementos e condição do atalho Ancient Feud. Os arquivos não são copiados para o pacote."
     }
   ],
   "components": {
     "cavebot": {
       "status": "missing",
       "path": null,
-      "notes": "Nenhuma rota completa foi confirmada."
+      "notes": "Busca profunda concluída sem confirmar uma rota pública completa e reproduzível."
     },
     "targetbot": {
       "status": "referenced",
-      "path": null,
-      "notes": "Referência contém Werehyaena e Werehyaena Shaman com lureCount 3."
+      "path": "source-lock.json",
+      "notes": "Referência contém Werehyaena e Werehyaena Shaman, lureCount 3, maxDistance 10 e prioridade 7. Redistribuição integral não autorizada."
     },
     "attackbot": {
       "status": "missing",
-      "path": null,
-      "notes": "Não será criado antes da auditoria de resistências, spells e cooldowns."
+      "path": "evidence/monster-data.json",
+      "notes": "Elementos auditados. Gelo, energia e death são candidatos para futura rotação MS; nenhum perfil executável foi criado."
     },
     "healbot": {
       "status": "missing",
       "path": null,
-      "notes": "Pendente."
+      "notes": "Limiares dependem de teste local e do equipamento real."
     },
     "supplies": {
       "status": "missing",
       "path": null,
-      "notes": "NPCs, itens, mínimos e máximos não auditados."
+      "notes": "NPCs, capacidades e quantidades não foram confirmados por uma rota pública."
     },
     "refill": {
       "status": "missing",
-      "path": null,
-      "notes": "Cidade inicial, banco, NPCs e retorno não confirmados."
+      "path": "evidence/access-data.json",
+      "notes": "O atalho Ancient Feud foi documentado, mas depot, banco, compras e retorno permanecem desconhecidos."
     },
     "rollback": {
       "status": "missing",
       "path": null,
-      "notes": "Será produzido junto ao instalador somente após M3."
+      "notes": "Não existe instalador em M2; rollback será criado somente junto ao pacote M3."
     }
   },
-  "changes": [],
+  "changes": [
+    "Nenhuma alteração foi feita no cliente ou personagem.",
+    "TargetBot comunitário foi registrado apenas por metadados, commit e hash.",
+    "Licença comunitária foi classificada como não declarada e reference-only.",
+    "Dados de acesso e combate foram extraídos de fontes primárias fixadas por commit.",
+    "A ausência de CaveBot e refill foi registrada como bloqueador explícito."
+  ],
   "tests": [
     {
       "name": "source-audit",
-      "status": "pending",
-      "evidence": null
+      "status": "passed",
+      "evidence": "source-lock.json registra repositórios, commits, caminhos e Git blob SHA-1."
     },
     {
       "name": "license-audit",
-      "status": "pending",
-      "evidence": null
+      "status": "passed",
+      "evidence": "LICENSE ausente na fonte comunitária; redistribuição definida como reference-only."
     },
     {
-      "name": "route-discovery",
+      "name": "game-data-audit",
+      "status": "passed",
+      "evidence": "Monstros e atalho Ancient Feud auditados no Canary fixado."
+    },
+    {
+      "name": "route-search-audit",
+      "status": "passed",
+      "evidence": "Busca concluída; nenhum conjunto CaveBot + refill público e reproduzível foi confirmado."
+    },
+    {
+      "name": "package-adaptation",
       "status": "pending",
       "evidence": null
     }
@@ -111,6 +132,10 @@
     "rollbackRequired": true,
     "modulesOffAfterInstall": true,
     "secretsProhibited": true,
-    "manualCheckpoints": []
+    "manualCheckpoints": [
+      "Não transformar coordenadas de acesso em CaveBot sem uma rota verificável.",
+      "Não copiar o TargetBot comunitário enquanto a licença não estiver clara.",
+      "Não criar instalador antes de CaveBot, refill e dependências entrarem em M3."
+    ]
   }
 }

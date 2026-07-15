@@ -1,0 +1,29 @@
+name: Werehyaenas Research
+
+on:
+  push:
+    paths:
+      - 'hunts/ms/300-499/werehyaenas/**'
+      - '.github/workflows/werehyaenas-research.yml'
+  pull_request:
+    paths:
+      - 'hunts/ms/300-499/werehyaenas/**'
+      - '.github/workflows/werehyaenas-research.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate M2 research package
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Validate research package
+        shell: pwsh
+        run: ./hunts/ms/300-499/werehyaenas/tests/Test-WerehyaenasResearch.ps1
