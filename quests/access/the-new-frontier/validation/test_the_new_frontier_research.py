@@ -25,10 +25,98 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def validate_coordinates(coordinates: dict[str, Any]) -> None:
+    require(
+        coordinates["datasetStatus"] == "provisional-reference",
+        "Coordinate dataset must remain provisional-reference in M2.",
+    )
+    require(
+        coordinates["source"]["url"]
+        == "https://www.tibiawiki.com.br/wiki/The_New_Frontier_Quest",
+        "Coordinate dataset must point to the audited TibiaWiki page.",
+    )
+    require(
+        coordinates["validationPolicy"]["coordinateIsNotWaypoint"] is True,
+        "The dataset must explicitly state that a coordinate is not a waypoint.",
+    )
+    require(
+        coordinates["validationPolicy"]["manualActionsRemainManual"] is True,
+        "Manual quest actions must remain manual.",
+    )
+
+    points = coordinates["points"]
+    require(len(points) == 26, "The audited TibiaWiki dataset must contain 26 points.")
+
+    ids = [point["id"] for point in points]
+    require(len(ids) == len(set(ids)), "Coordinate point IDs must be unique.")
+
+    for point in points:
+        require(
+            point["validationStatus"] == "pending-marolaot-validation",
+            f"Coordinate {point['id']} must remain pending MarolaOT validation.",
+        )
+        require(
+            isinstance(point["mission"], int) and 0 <= point["mission"] <= 10,
+            f"Coordinate {point['id']} has an invalid mission number.",
+        )
+
+        position = point["position"]
+        require(
+            set(position) == {"x", "y", "z"},
+            f"Coordinate {point['id']} must contain only x, y and z.",
+        )
+        require(
+            all(isinstance(position[axis], int) for axis in ("x", "y", "z")),
+            f"Coordinate {point['id']} must use integer axes.",
+        )
+        require(
+            position["x"] > 0 and position["y"] > 0 and position["z"] >= 0,
+            f"Coordinate {point['id']} contains an invalid axis value.",
+        )
+
+    required_ids = {
+        "m01-farmine-right-elevator",
+        "m01-mountain-passage-trigger",
+        "m02-melfar",
+        "m02-tree-01",
+        "m02-tree-02",
+        "m02-tree-03",
+        "m03-mountain-vines",
+        "m04-farmine-left-elevator",
+        "m06-mooh-tah-arena-entrance",
+        "m07-sealed-doors",
+        "m09-chrak",
+    }
+    require(
+        required_ids.issubset(ids),
+        "Coordinate dataset is missing one or more critical audited points.",
+    )
+
+    mission_five_ids = {point["id"] for point in points if point["mission"] == 5}
+    require(
+        mission_five_ids
+        == {
+            "m05-angus",
+            "m05-humgolf",
+            "m05-king-tibianus",
+            "m05-leeland",
+            "m05-telas",
+            "m05-wyrdin",
+        },
+        "Mission 5 must contain exactly the six audited representative coordinates.",
+    )
+
+    require(
+        len(coordinates["unresolvedReferencePoints"]) == 6,
+        "Unresolved editorial points must remain documented rather than invented.",
+    )
+
+
 def main() -> int:
     manifest = load_json("source-manifest.json")
     source_lock = load_json("source-lock.json")
     evidence = load_json("evidence/quest-data.json")
+    coordinates = load_json("evidence/tibiawiki-coordinates.json")
 
     require(manifest["maturity"] == "M2", "Package must remain at maturity M2.")
     require(
@@ -91,6 +179,8 @@ def main() -> int:
     require(len(arena["waves"]) == 7, "The arena must document seven waves.")
     require(arena["manualOnly"] is True, "The arena must remain manual.")
 
+    validate_coordinates(coordinates)
+
     search_result = source_lock["searchResult"]
     require(
         search_result["readyPublicCaveBotFound"] is False,
@@ -119,6 +209,7 @@ def main() -> int:
     require(route_entries == [Path("README.md")], "Route directory must contain only README.md in M2.")
 
     required_manual_concepts = {
+        "coordinate validation": ("coordenada", "coordinate"),
         "beaver bait": ("beaver",),
         "Shard of Corruption": ("shard",),
         "persuasion dialogues": ("persuas",),
