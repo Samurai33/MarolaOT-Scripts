@@ -5,11 +5,13 @@ on:
     paths:
       - '**/*.ps1'
       - '**/*.psm1'
+      - 'PSScriptAnalyzerSettings.psd1'
       - '.github/workflows/powershell-lint.yml'
   pull_request:
     paths:
       - '**/*.ps1'
       - '**/*.psm1'
+      - 'PSScriptAnalyzerSettings.psd1'
       - '.github/workflows/powershell-lint.yml'
 
 permissions:
@@ -33,9 +35,10 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
+          $settingsPath = './PSScriptAnalyzerSettings.psd1'
           $paths = @('./scripts', './hunts') | Where-Object { Test-Path -LiteralPath $_ }
           $results = foreach ($path in $paths) {
-            Invoke-ScriptAnalyzer -Path $path -Recurse -Severity Warning,Error
+            Invoke-ScriptAnalyzer -Path $path -Recurse -Settings $settingsPath
           }
 
           @($results) |
@@ -53,7 +56,7 @@ jobs:
             throw "PSScriptAnalyzer found $(@($results).Count) issue(s)."
           }
 
-          Write-Host 'PSScriptAnalyzer found no warnings or errors.'
+          Write-Host 'PSScriptAnalyzer found no configured warnings or errors.'
 
       - name: Upload analysis report
         if: always()
