@@ -21,7 +21,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          show-progress: false
 
-      - name: Validate package
+      - name: Validate structure and PowerShell
+        shell: pwsh
+        run: ./hunts/ms/500-699/cobra-tower/tests/Test-CobraTowerPackage.ps1 -SkipChecksums
+
+      - name: Validate package checksums
         shell: pwsh
         run: ./hunts/ms/500-699/cobra-tower/tests/Test-CobraTowerPackage.ps1
