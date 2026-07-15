@@ -1,0 +1,16 @@
+{
+  "supplies": {
+    "currentProfile": "Invalid",
+    "Invalid": {
+      "items": {
+        "not-an-item-id": {
+          "min": 100,
+          "max": 50,
+          "avg": 0
+        }
+      },
+      "capSwitch": true,
+      "capValue": "300"
+    }
+  }
+}
