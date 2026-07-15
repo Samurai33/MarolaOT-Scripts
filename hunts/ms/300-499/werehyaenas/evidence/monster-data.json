@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0.0",
+  "source": {
+    "repository": "opentibiabr/canary",
+    "commit": "a879c9312e34381e8eedf397b8ed44510698b689"
+  },
+  "monsters": [
+    {
+      "name": "Werehyaena",
+      "sourcePath": "data-otservbr-global/monster/lycanthropes/werehyaena.lua",
+      "gitBlobSha1": "62a890f771fae87fe6377ef23b767922413673f0",
+      "experience": 2200,
+      "health": 2700,
+      "armor": 36,
+      "speed": 120,
+      "targetDistance": 1,
+      "runHealthPercent": 30,
+      "damageThreats": [
+        "physical melee",
+        "earth area",
+        "death targeted area",
+        "death wave"
+      ],
+      "elements": {
+        "physical": 0,
+        "energy": 0,
+        "earth": 40,
+        "fire": 50,
+        "ice": -20,
+        "holy": -25,
+        "death": 0
+      }
+    },
+    {
+      "name": "Werehyaena Shaman",
+      "sourcePath": "data-otservbr-global/monster/lycanthropes/werehyaena_shaman.lua",
+      "gitBlobSha1": "184a4c56e05d564a9202fbe265153ee76eabc0cd",
+      "experience": 2200,
+      "health": 2500,
+      "armor": 38,
+      "speed": 110,
+      "targetDistance": 1,
+      "runHealthPercent": 30,
+      "damageThreats": [
+        "physical melee",
+        "death area",
+        "earth targeted area",
+        "death targeted area",
+        "death wave"
+      ],
+      "elements": {
+        "physical": 0,
+        "energy": 0,
+        "earth": 40,
+        "fire": 25,
+        "ice": -20,
+        "holy": 5,
+        "death": -5
+      }
+    }
+  ],
+  "interpretation": {
+    "positivePercent": "resistance in the audited Canary monster definition",
+    "zeroPercent": "normal damage",
+    "negativePercent": "vulnerability in the audited Canary monster definition",
+    "futureMsRotationCandidate": {
+      "preferredElements": [
+        "ice",
+        "energy",
+        "death"
+      ],
+      "deprioritizedElements": [
+        "fire",
+        "earth"
+      ],
+      "status": "research-only",
+      "notes": "This is an evidence-based direction for a future AttackBot. It is not an executable combat profile and must be checked against MarolaOT spell and item definitions before M3."
+    }
+  }
+}
