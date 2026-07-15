@@ -104,9 +104,14 @@
       "evidence": "validation/test_the_new_frontier_research.py"
     },
     {
-      "name": "provisional-coordinate-gate",
-      "status": "pending",
+      "name": "provisional-coordinate-structure-gate",
+      "status": "passed",
       "evidence": "evidence/tibiawiki-coordinates.json"
+    },
+    {
+      "name": "coordinate-validation-in-marolaot",
+      "status": "pending",
+      "evidence": "Todos os pontos continuam com validationStatus pending-marolaot-validation."
     }
   ],
   "safety": {
