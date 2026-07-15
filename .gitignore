@@ -13,6 +13,12 @@ quarantine-*/
 secrets/
 credentials/
 
+# Claude Code local state
+.claude/settings.local.json
+.claude/runtime/
+.claude/agent-memory-local/
+CLAUDE.local.md
+
 # Database dumps
 *.sql
 *.sql.gz
