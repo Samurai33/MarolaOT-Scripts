@@ -30,19 +30,33 @@ Consulte também:
 | M0/M1 | Summer Court | MS | 500+ | Nenhum pacote comunitário completo confirmado | Continuar pesquisa; não criar rota por suposição |
 | M0 | Asura Mirror | MS | 450+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 | M0 | Winter Court | MS | 500+ | Backlog sem fonte completa registrada | Buscar referência verificável |
-| M0 | Falcon Bastion | MS | 500+ | Backlog sem fonte completa registrada | Buscar referência verificável |
+| M0 | Falcon Bastion | MS | 500+ | Hunt ainda sem rota e configurações auditadas | Separar hunt da quest de acesso e buscar referência completa |
 | M0 | Issavi Sphinx/Lamassu | MS | 450+ | Backlog sem fonte completa registrada | Buscar referência verificável |
 
 ## Quests e acessos
 
 | Maturidade | Quest/acesso | Tipo | Evidência atual | Próximo passo |
 |---:|---|---|---|---|
+| M2 | The Order of the Falcon | Quest/acesso | TibiaWiki auditada; storages, bosses, doors, boats e Oberon cruzados com Canary; rota pronta não localizada | Confirmar IDs e revisão do MarolaOT; capturar rota própria por segmentos |
 | M0 | Dream Courts | Acesso | Estrutura conceitual; nenhuma rota auditada | Buscar fontes de NPCs, storages, itens e checkpoints |
 | M0 | Cobra Bastion | Acesso | Backlog | Registrar fontes e versão do servidor |
-| M0 | Falcon Bastion | Acesso | Backlog | Registrar fontes e versão do servidor |
 | M0 | Kilmaresh | Acesso | Backlog | Registrar fontes e versão do servidor |
 | M0 | Secret Library | Acesso | Backlog | Registrar fontes e versão do servidor |
 | M0 | Grave Danger | Quest | Backlog | Registrar fontes e checkpoints manuais |
+
+## Primeira quest assistida
+
+O pacote [`quests/access/the-order-of-the-falcon/`](../quests/access/the-order-of-the-falcon/) inaugura o P4.
+
+Ele permanece documental em M2 e aplica paradas manuais obrigatórias antes de:
+
+- preparação e uso do item do ritual;
+- cada miniboss;
+- portas e barcos ainda não validados;
+- portal e alavanca do Grand Master Oberon;
+- debate e combate do boss final.
+
+Não há CaveBot executável até que uma rota original seja capturada e comparada com a revisão do MarolaOT.
 
 ## Estrutura obrigatória de uma hunt
 
@@ -91,5 +105,5 @@ Quests não automatizam decisões irreversíveis sem parada explícita. Entregas
 2. **P1:** consolidar Cobra Tower como release de referência.
 3. **P2:** reconstruir Werehyaenas a partir de evidência verificável.
 4. **P3:** ampliar validação estrutural e testes automáticos.
-5. **P4:** criar framework seguro para quests e acessos.
+5. **P4:** criar framework seguro para quests e acessos, iniciado por The Order of the Falcon.
 6. **P5:** selecionar novas hunts pela qualidade das fontes encontradas.
