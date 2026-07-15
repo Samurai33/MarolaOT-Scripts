@@ -2,6 +2,19 @@
 
 Audited against official Anthropic documentation on **2026-07-15**.
 
+## Documentation map
+
+| Document | Purpose |
+|---|---|
+| [`INSTALLATION.md`](INSTALLATION.md) | Windows installation, workspace trust, activation, and rollback |
+| [`OPERATING_MODEL.md`](OPERATING_MODEL.md) | Task classes, state machine, handoff, and stop conditions |
+| [`SKILLS_AND_AGENTS.md`](SKILLS_AND_AGENTS.md) | Skills, subagents, routing, and invocation contracts |
+| [`LOOPS.md`](LOOPS.md) | Official recurring `/loop` versus bounded `/quality-loop` |
+| [`TOKEN_EFFICIENCY.md`](TOKEN_EFFICIENCY.md) | Context, caching, model routing, and measured 40–70% target |
+| [`METRICS.md`](METRICS.md) | Baseline and optimized benchmark records |
+| [`SECURITY.md`](SECURITY.md) | Permissions, trust boundary, hooks, MCP, and incident response |
+| [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) | Diagnostic and recovery runbook |
+
 ## Architecture decision
 
 Use the lightest mechanism that satisfies the requirement:
@@ -61,6 +74,7 @@ Confirm installed bundled-command syntax through `/help` after Claude Code upgra
 
 ## Official references
 
+- https://code.claude.com/docs/en/setup
 - https://code.claude.com/docs/en/memory
 - https://code.claude.com/docs/en/skills
 - https://code.claude.com/docs/en/sub-agents
