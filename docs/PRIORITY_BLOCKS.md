@@ -50,44 +50,54 @@ Todo novo pacote deve possuir um `source-manifest.json` válido antes de receber
 
 ### Entregáveis
 
-- [ ] Reorganizar Cobra Tower em pacote autocontido.
-- [ ] Incluir CaveBot, TargetBot, configs, instalador, testes e rollback.
+- [x] Reorganizar Cobra Tower em pacote autocontido na branch de release candidate.
+- [x] Incluir perfis, instalador, testes e rollback.
 - [x] Registrar fonte comunitária e commit fixo.
-- [ ] Documentar diferenças entre upstream e MarolaOT.
-- [ ] Adicionar checksums e inventário dos arquivos instalados.
+- [x] Documentar diferenças entre upstream e MarolaOT.
+- [x] Adicionar checksums e inventário dos arquivos instalados.
+- [ ] Validar instalação limpa, dry-run e rollback no ambiente real.
 - [ ] Criar release `cobra-tower-v1.0.0`.
 
 ### Critério de saída
 
 Instalação e restauração reproduzíveis a partir de um clone limpo, com todos os módulos desligados ao final.
 
-**Status:** iniciado com `README.md` e `source-manifest.json` no pacote Cobra Tower.
+**Status:** release candidate `1.0.0-rc.1` no PR #3; CI verde; testes operacionais adiados por decisão do mantenedor.
 
 ## P2 — Werehyaenas: reconstrução orientada por referência
 
 **Objetivo:** promover Werehyaenas de referência parcial para pacote adaptável, sem inventar rota.
 
-### Evidência disponível
+### Evidência auditada
 
-- TargetBot comunitário localizado no repositório `Kolczan/Tibia-Scripts`.
-- Monstros identificados: `Werehyaena` e `Werehyaena Shaman`.
-- Rota CaveBot e refill completos ainda não confirmados.
+- TargetBot comunitário localizado e fixado por commit e Git blob SHA-1.
+- Monstros confirmados: `Werehyaena` e `Werehyaena Shaman`.
+- Licença da referência comunitária classificada como **não declarada**; uso restrito a `reference-only`.
+- Upstream OTCv8 fixado no commit `aacfe3f1fe4bcadb5a34ff1f36263e1c96b3dd32`.
+- Dados de criaturas e acesso auditados no Canary fixado no commit `a879c9312e34381e8eedf397b8ed44510698b689`.
+- Atalho `Ancient Feud` documentado por storage e quatro pares de teleporte.
+- Nenhum CaveBot completo ou refill público e reproduzível foi confirmado.
 
 ### Entregáveis
 
-- [x] Criar manifesto de origem com commit fixo.
-- [ ] Auditar licença do material comunitário.
-- [ ] Localizar CaveBot correspondente ou documentar captura própria.
-- [ ] Mapear NPCs, supplies, acesso, entrada, loop e retorno.
-- [ ] Portar TargetBot sem looting interno.
+- [x] Criar manifesto de origem com commits fixos.
+- [x] Auditar licença do material comunitário.
+- [x] Criar `source-lock.json` com caminhos e hashes.
+- [x] Auditar criaturas, elementos e riscos de combate.
+- [x] Documentar o atalho Ancient Feud sem transformá-lo em rota.
+- [x] Registrar busca de CaveBot/refill como concluída sem correspondência.
+- [x] Criar CI que mantém o pacote documental em M2.
+- [ ] Localizar CaveBot correspondente ou produzir captura própria documentada.
+- [ ] Mapear depot, NPCs, supplies, entrada normal, loop, saída e retorno.
+- [ ] Produzir TargetBot próprio sem copiar conteúdo não licenciado.
 - [ ] Criar AttackBot, HealBot e Supplies com dados verificados.
-- [ ] Produzir instalador e checklist de teste local.
+- [ ] Produzir instalador, rollback e checklist de teste local.
 
 ### Critério de saída
 
-Werehyaenas só entra em M3 quando CaveBot, refill e dependências estiverem documentados; possuir apenas TargetBot mantém o pacote em M2.
+Werehyaenas só entra em M3 quando CaveBot, refill e dependências estiverem documentados. TargetBot isolado, coordenadas de atalho ou dados de monstros não constituem uma hunt adaptada.
 
-**Status:** iniciado em M1, sem alterações no cliente.
+**Status:** M2 concluído em pesquisa documental; nenhum arquivo do cliente ou personagem foi alterado.
 
 ## P3 — Validação estrutural e CI
 
@@ -98,7 +108,7 @@ Werehyaenas só entra em M3 quando CaveBot, refill e dependências estiverem doc
 - [ ] Schema para AttackBot, HealBot, Supplies e TargetBot.
 - [ ] Parser estático de CaveBot para labels e ações conhecidas.
 - [ ] Verificação de referências quebradas e arquivos ausentes.
-- [ ] PSScriptAnalyzer sem warnings ou errors.
+- [x] PSScriptAnalyzer com política versionada e CI verde no release candidate da Cobra Tower.
 - [ ] Relatório de pacote gerado pelo CI.
 
 ### Critério de saída
@@ -134,7 +144,7 @@ Nenhum fluxo de quest executa decisão irreversível sem confirmação manual ex
 
 ### Candidatos atuais
 
-- Werehyaenas — M1/M2 parcial.
+- Werehyaenas — M2 auditado, bloqueado por ausência de CaveBot/refill.
 - Summer Court — M0/M1, sem pacote comunitário completo confirmado.
 - Asura Mirror — M0/M1.
 - Winter Court — M0/M1.
