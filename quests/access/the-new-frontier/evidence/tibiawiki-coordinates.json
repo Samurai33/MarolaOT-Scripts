@@ -1,0 +1,312 @@
+{
+  "schemaVersion": "1.0.0",
+  "quest": "The New Frontier",
+  "datasetStatus": "provisional-reference",
+  "source": {
+    "name": "Tibia Wiki Brasil — The New Frontier Quest",
+    "url": "https://www.tibiawiki.com.br/wiki/The_New_Frontier_Quest",
+    "publishedRevisionApprovedAt": "2026-06-23",
+    "usage": "Coordinate reference only; no route or waypoint was generated automatically."
+  },
+  "validationPolicy": {
+    "targetServer": "MarolaOT",
+    "requiredStatusBeforeRouteUse": "validated-in-marolaot",
+    "defaultStatus": "pending-marolaot-validation",
+    "coordinateIsNotWaypoint": true,
+    "manualActionsRemainManual": true
+  },
+  "points": [
+    {
+      "id": "travel-kazordoon-steamship",
+      "mission": 0,
+      "label": "Kazordoon steamship para Farmine",
+      "location": "Kazordoon",
+      "position": { "x": 32659, "y": 31958, "z": 15 },
+      "purpose": "Ponto de transporte para Farmine",
+      "actionPolicy": "manual-transport-first-validation",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "travel-cormaya-steamship",
+      "mission": 0,
+      "label": "Cormaya steamship para Farmine",
+      "location": "Cormaya",
+      "position": { "x": 33309, "y": 31989, "z": 15 },
+      "purpose": "Ponto de transporte para Farmine",
+      "actionPolicy": "manual-transport-first-validation",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "travel-cormaya-steamship-entrance",
+      "mission": 0,
+      "label": "Entrada subterrânea do steamship de Cormaya",
+      "location": "Cormaya",
+      "position": { "x": 33309, "y": 31996, "z": 7 },
+      "purpose": "Entrada da rota até o steamship",
+      "actionPolicy": "navigation-reference",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m01-farmine-right-elevator",
+      "mission": 1,
+      "label": "Elevador direito de Farmine",
+      "location": "Farmine",
+      "position": { "x": 33062, "y": 31528, "z": 14 },
+      "purpose": "Subida para o topo da montanha",
+      "actionPolicy": "stop-before-lever",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m01-mountain-passage-trigger",
+      "mission": 1,
+      "label": "Passagem da montanha",
+      "location": "Zao mountains",
+      "position": { "x": 33081, "y": 31532, "z": 6 },
+      "purpose": "Ponto editorial onde a passagem é descoberta",
+      "actionPolicy": "navigation-reference",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m02-melfar",
+      "mission": 2,
+      "label": "NPC Melfar",
+      "location": "Kazordoon Dwarf Mines",
+      "position": { "x": 32524, "y": 31968, "z": 7 },
+      "purpose": "Receber e reportar a tarefa do beaver bait",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m02-tree-01",
+      "mission": 2,
+      "label": "Árvore 1 — Thieving Squirrel",
+      "location": "Kazordoon surface",
+      "position": { "x": 32458, "y": 31997, "z": 7 },
+      "purpose": "Uso manual do Flask with Beaver Bait",
+      "actionPolicy": "manual-item-use",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m02-tree-02",
+      "mission": 2,
+      "label": "Árvore 2 — wolves",
+      "location": "Kazordoon surface",
+      "position": { "x": 32474, "y": 31947, "z": 7 },
+      "purpose": "Uso manual do Flask with Beaver Bait",
+      "actionPolicy": "manual-item-use",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m02-tree-03",
+      "mission": 2,
+      "label": "Árvore 3 — enraged squirrels",
+      "location": "Kazordoon surface",
+      "position": { "x": 32515, "y": 31927, "z": 7 },
+      "purpose": "Uso manual do Flask with Beaver Bait",
+      "actionPolicy": "manual-item-use",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m03-mountain-vines",
+      "mission": 3,
+      "label": "Vinhas de acesso à tribo",
+      "location": "Zao mountains",
+      "position": { "x": 33021, "y": 31535, "z": 6 },
+      "purpose": "Subida para a área de Lazaran",
+      "actionPolicy": "manual-object-first-validation",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m04-farmine-left-elevator",
+      "mission": 4,
+      "label": "Elevador esquerdo para mina A07",
+      "location": "Farmine",
+      "position": { "x": 33056, "y": 31529, "z": 14 },
+      "purpose": "Acesso ao caminho do Shard of Corruption",
+      "actionPolicy": "stop-before-lever",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-angus",
+      "mission": 5,
+      "label": "NPC Angus",
+      "location": "Port Hope",
+      "position": { "x": 32671, "y": 32730, "z": 7 },
+      "purpose": "Representante da Explorer Society",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-humgolf",
+      "mission": 5,
+      "label": "NPC Humgolf",
+      "location": "Kazordoon",
+      "position": { "x": 32598, "y": 31879, "z": 9 },
+      "purpose": "Worm tamer",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-king-tibianus",
+      "mission": 5,
+      "label": "NPC King Tibianus",
+      "location": "Thais",
+      "position": { "x": 32311, "y": 32171, "z": 6 },
+      "purpose": "Apoio financeiro para Farmine",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-leeland",
+      "mission": 5,
+      "label": "NPC Leeland",
+      "location": "Venore",
+      "position": { "x": 32883, "y": 32082, "z": 5 },
+      "purpose": "Representante dos comerciantes de Venore",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-telas",
+      "mission": 5,
+      "label": "NPC Telas",
+      "location": "Edron",
+      "position": { "x": 33275, "y": 31799, "z": 6 },
+      "purpose": "Apoio com worker golems",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m05-wyrdin",
+      "mission": 5,
+      "label": "NPC Wyrdin",
+      "location": "Edron",
+      "position": { "x": 33268, "y": 31836, "z": 6 },
+      "purpose": "Representante da academia de Edron",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m06-mooh-tah-arena-entrance",
+      "mission": 6,
+      "label": "Entrada da arena do Mooh'Tah Master",
+      "location": "Zao Steppe orc camp",
+      "position": { "x": 33141, "y": 31418, "z": 7 },
+      "purpose": "Checkpoint anterior à arena de sobrevivência",
+      "actionPolicy": "manual-arena",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m07-dragonblaze-ropespot",
+      "mission": 7,
+      "label": "Ropespot de Dragonblaze Peaks",
+      "location": "Dragonblaze Peaks",
+      "position": { "x": 33175, "y": 31305, "z": 7 },
+      "purpose": "Subida em direção à fortaleza",
+      "actionPolicy": "manual-object-first-validation",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m07-sealed-doors",
+      "mission": 7,
+      "label": "Portas seladas",
+      "location": "Lizard fortress",
+      "position": { "x": 33170, "y": 31260, "z": 10 },
+      "purpose": "Checkpoint anterior à prisão",
+      "actionPolicy": "manual-door-and-trap",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m07-tome-chest",
+      "mission": 7,
+      "label": "Baú do Tome of Knowledge",
+      "location": "Lizard fortress",
+      "position": { "x": 33162, "y": 31256, "z": 10 },
+      "purpose": "Coleta manual do tomo",
+      "actionPolicy": "manual-chest",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m09-isle-tome-chest",
+      "mission": 9,
+      "label": "Baú do tomo na Isle of Strife",
+      "location": "Chazorai / Isle of Strife",
+      "position": { "x": 33057, "y": 31018, "z": 2 },
+      "purpose": "Coleta opcional do Tome of Knowledge",
+      "actionPolicy": "manual-chest",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m09-one-way-muggy-teleport",
+      "mission": 9,
+      "label": "Teleporte somente de ida para Muggy Plains",
+      "location": "Chazorai / Isle of Strife",
+      "position": { "x": 33066, "y": 31012, "z": 0 },
+      "purpose": "Saída alternativa de sentido único",
+      "actionPolicy": "manual-one-way-teleport",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m09-chrak",
+      "mission": 9,
+      "label": "NPC Chrak",
+      "location": "Chazorai / Isle of Strife",
+      "position": { "x": 33079, "y": 31022, "z": 2 },
+      "purpose": "Entrada e relatório da arena",
+      "actionPolicy": "manual-dialogue-and-arena",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m09-zurak-chazorai",
+      "mission": 9,
+      "label": "NPC Zurak em Chazorai",
+      "location": "Chazorai",
+      "position": { "x": 33103, "y": 31055, "z": 7 },
+      "purpose": "Transporte ou retorno à sala de recompensas",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    },
+    {
+      "id": "m09-zurak-muggy-plains",
+      "mission": 9,
+      "label": "NPC Zurak em Muggy Plains",
+      "location": "Muggy Plains",
+      "position": { "x": 33158, "y": 31226, "z": 7 },
+      "purpose": "Transporte ou retorno à sala de recompensas",
+      "actionPolicy": "manual-dialogue",
+      "validationStatus": "pending-marolaot-validation"
+    }
+  ],
+  "unresolvedReferencePoints": [
+    {
+      "mission": 1,
+      "label": "NPC Ongulf",
+      "reason": "A página consultada descreve sua posição em Farmine, mas não apresenta coordenada textual explícita no trecho auditado."
+    },
+    {
+      "mission": 3,
+      "label": "NPC Lazaran",
+      "reason": "A página indica a caverna e o trajeto, mas não apresenta coordenada textual explícita do NPC."
+    },
+    {
+      "mission": 4,
+      "label": "Shard of Corruption",
+      "reason": "A página indica a região nordeste da mina A07 sem coordenada textual explícita do boss."
+    },
+    {
+      "mission": 6,
+      "label": "NPC Curos",
+      "reason": "A página fornece a coordenada da entrada da arena, mas não uma coordenada textual explícita do NPC."
+    },
+    {
+      "mission": 8,
+      "label": "NPC Ztiss e teleporte da prisão",
+      "reason": "A sequência é descrita editorialmente sem coordenadas textuais explícitas nesta missão."
+    },
+    {
+      "mission": 10,
+      "label": "Relatório final a Ongulf",
+      "reason": "Reutiliza o NPC de Farmine, cuja coordenada textual explícita não foi localizada no guia."
+    }
+  ]
+}

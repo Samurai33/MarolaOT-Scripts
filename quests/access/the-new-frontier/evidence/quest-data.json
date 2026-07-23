@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "quest": {
+    "name": "The New Frontier",
+    "questlineStorage": "Storage.Quest.U8_54.TheNewFrontier.Questline",
+    "missionCount": 10,
+    "duration": "long",
+    "recommendedLevel": 60,
+    "groupRequirement": {
+      "mission": 9,
+      "players": 2,
+      "minimumLevel": 70,
+      "note": "Players who already completed the arena cannot enter again according to the editorial reference."
+    }
+  },
+  "missions": [
+    {
+      "number": 1,
+      "name": "New Land",
+      "missionId": 10409,
+      "storage": "Mission01",
+      "objective": "Scout the mountain passage and report to Ongulf.",
+      "futureSegments": ["farmine-to-elevator", "mountain-passage", "return-to-ongulf"],
+      "manualCheckpoints": ["start-dialogue", "mission-report"]
+    },
+    {
+      "number": 2,
+      "name": "From Kazordoon With Love",
+      "missionId": 10410,
+      "storage": "Mission02[1]",
+      "objective": "Talk to Melfar, mark three trees with beaver bait and report progress.",
+      "futureSegments": ["farmine-to-kazordoon", "melfar-to-tree-1", "tree-1-to-tree-2", "tree-2-to-tree-3", "return-to-melfar", "return-to-ongulf"],
+      "manualCheckpoints": ["receive-beaver-bait", "use-item-on-each-tree", "recover-stolen-bait", "mission-reports"]
+    },
+    {
+      "number": 3,
+      "name": "Strangers in the Night",
+      "missionId": 10411,
+      "storage": "Mission03",
+      "objective": "Find Lazaran and negotiate peace.",
+      "futureSegments": ["farmine-to-vines", "vines-to-lazaran", "return-to-ongulf"],
+      "manualCheckpoints": ["vine-use", "lazaran-dialogue", "mission-report"]
+    },
+    {
+      "number": 4,
+      "name": "The Mine Is Mine",
+      "missionId": 10412,
+      "storage": "Mission04",
+      "objective": "Enter mine A07, defeat Shard of Corruption and report.",
+      "futureSegments": ["ongulf-to-mine-lift", "mine-entry-to-boss-checkpoint", "boss-room-to-return"],
+      "manualCheckpoints": ["boss-entry", "shard-of-corruption-combat", "mission-report"]
+    },
+    {
+      "number": 5,
+      "name": "Getting Things Busy",
+      "missionId": 10413,
+      "storage": "Mission05[1]",
+      "objective": "Gain support from six representatives using specific dialogue strategies.",
+      "subMissions": [
+        {"missionId": 10414, "npc": "Humgolf", "location": "Kazordoon", "strategy": "manual"},
+        {"missionId": 10415, "npc": "Wyrdin", "location": "Edron", "strategy": "manual"},
+        {"missionId": 10416, "npc": "Angus", "location": "Port Hope", "strategy": "manual"},
+        {"missionId": 10417, "npc": "Telas", "location": "Edron", "strategy": "manual"},
+        {"missionId": 10418, "npc": "King Tibianus", "location": "Thais", "strategy": "manual"},
+        {"missionId": 10419, "npc": "Leeland", "location": "Venore", "strategy": "manual"}
+      ],
+      "futureSegments": ["city-travel-only"],
+      "manualCheckpoints": ["all-npc-dialogues", "persuasion-word-selection", "recovery-item-if-dialogue-fails", "mission-report"]
+    },
+    {
+      "number": 6,
+      "name": "Days Of Doom",
+      "missionId": 10420,
+      "storage": "Mission06",
+      "objective": "Negotiate with Curos and survive the Mooh'Tah Master arena.",
+      "futureSegments": ["farmine-to-curos", "curos-to-arena-checkpoint", "arena-exit-to-curos", "return-to-ongulf"],
+      "manualCheckpoints": ["curos-dialogue", "arena-entry", "two-minute-survival", "post-arena-dialogue", "mission-report"]
+    },
+    {
+      "number": 7,
+      "name": "Messengers Of Peace",
+      "missionId": 10421,
+      "storage": "Mission07[1]",
+      "objective": "Find the lizard contact and attempt peace negotiations.",
+      "futureSegments": ["farmine-to-lizard-contact", "return-route"],
+      "manualCheckpoints": ["lizard-dialogue", "trap-transition"]
+    },
+    {
+      "number": 8,
+      "name": "An Offer You Can't Refuse",
+      "missionId": 10422,
+      "storage": "Mission08",
+      "objective": "Escape lizard captivity using the hidden note and secret exit.",
+      "futureSegments": ["prison-cell-to-note-checkpoint", "secret-door-to-safe-exit"],
+      "manualCheckpoints": ["inspect-cell", "take-hidden-note", "use-secret-door", "confirm-safe-exit"]
+    },
+    {
+      "number": 9,
+      "name": "Mortal Combat",
+      "missionId": 10423,
+      "storage": "Mission09[1]",
+      "objective": "Complete the two-player Isle of Strife tournament and report to Chrak.",
+      "futureSegments": ["travel-to-isle", "arena-staging-checkpoint", "arena-exit-to-chrak"],
+      "manualCheckpoints": ["verify-two-eligible-players", "lever-use", "all-seven-boss-waves", "arena-exit", "chrak-dialogue"]
+    },
+    {
+      "number": 10,
+      "name": "New Horizons",
+      "missionId": 10424,
+      "storage": "Mission10[1]",
+      "objective": "Return to Ongulf for the final report and unlock rewards/access.",
+      "futureSegments": ["return-to-farmine"],
+      "manualCheckpoints": ["final-dialogue", "verify-quest-log", "verify-access-unlocks"]
+    }
+  ],
+  "verifiedMechanics": {
+    "beaverBait": {
+      "itemId": 9843,
+      "treePositions": [
+        {"x": 32515, "y": 31927, "z": 7},
+        {"x": 32474, "y": 31947, "z": 7},
+        {"x": 32458, "y": 31997, "z": 7}
+      ],
+      "manualOnly": true
+    },
+    "shardOfCorruption": {
+      "progressCondition": "Questline == 11",
+      "progressResult": "Questline = 12",
+      "manualOnly": true
+    },
+    "prisonSecretDoor": {
+      "requiredStorage": "Mission07.HiddenNote == 1",
+      "doorPosition": {"x": 33170, "y": 31248, "z": 11},
+      "destination": {"x": 33170, "y": 31247, "z": 11},
+      "manualOnly": true
+    },
+    "isleOfStrifeArena": {
+      "players": 2,
+      "actionId": 30003,
+      "timeoutMinutes": 30,
+      "waveIntervalSeconds": 90,
+      "waves": [
+        ["Baron Brute", "The Axeorcist"],
+        ["Menace", "Fatality"],
+        ["Incineron", "Coldheart"],
+        ["Dreadwing", "Doomhowl"],
+        ["Haunter", "The Dreadorian"],
+        ["Rocko", "Tremorak"],
+        ["Tirecz"]
+      ],
+      "manualOnly": true
+    }
+  },
+  "automationPolicy": {
+    "allowedAtM2": ["documentation", "source-audit", "route-planning", "static-validation"],
+    "forbiddenAtM2": ["cavebot-files", "npc-dialogue-automation", "item-use", "boss-combat", "arena-lever", "prison-actions", "installation"]
+  }
+}

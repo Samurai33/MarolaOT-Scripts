@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-15",
+  "package": "the-new-frontier",
+  "sources": [
+    {
+      "name": "Tibia Wiki Brasil",
+      "url": "https://www.tibiawiki.com.br/wiki/The_New_Frontier_Quest",
+      "revision": {
+        "type": "published-page",
+        "approvedAt": "2026-06-23"
+      },
+      "license": "external-editorial-content",
+      "redistribution": "reference-only",
+      "verifiedFacts": [
+        "Quest longa com dez missões",
+        "Level 60 recomendado",
+        "Missão 9 exige dois jogadores level 70+",
+        "Recompensas incluem Warmaster Outfit, acesso a áreas de Zao e tapete mágico",
+        "Rota editorial atravessa Farmine, Kazordoon, Edron, Port Hope, Thais, Venore e Zao"
+      ]
+    },
+    {
+      "name": "OpenTibiaBR Canary",
+      "repository": "opentibiabr/canary",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "license": "GPL-2.0",
+      "redistribution": "reference-only",
+      "files": [
+        {
+          "path": "data-otservbr-global/lib/core/quests/catalog/043_the_new_frontier.lua",
+          "gitBlobSha1": "1e469576799258cbcd8dbcbd26cc9d49d2b629f3",
+          "role": "quest catalog, mission IDs and quest-log states"
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_new_frontier/action_beaver.lua",
+          "gitBlobSha1": "68350db37ef5adb608b0c4a065024a40ac13afab",
+          "role": "beaver bait item, tree positions and spawned creatures"
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_new_frontier/creaturescripts_shard_of_corruption_kill.lua",
+          "gitBlobSha1": "24d4a02922cf3e33c6d2b71f661702ab58ffb4a4",
+          "role": "Shard of Corruption progress gate"
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_new_frontier/action_arena.lua",
+          "gitBlobSha1": "16f8de50c2107db16bc3a1594bb5f31d035a593a",
+          "role": "two-player Isle of Strife arena, waves and timeout"
+        },
+        {
+          "path": "data-otservbr-global/scripts/quests/the_new_frontier/action_prision_secret_door.lua",
+          "gitBlobSha1": "80c4beb3d8e97b523a684ce4b92bd5b771a7b454",
+          "role": "hidden-note requirement and prison secret exit"
+        }
+      ]
+    }
+  ],
+  "searchResult": {
+    "readyPublicCaveBotFound": false,
+    "completeLicensedPackageFound": false,
+    "decision": "Create an original segmented capture in MarolaOT after M2; do not infer waypoints from editorial maps."
+  }
+}

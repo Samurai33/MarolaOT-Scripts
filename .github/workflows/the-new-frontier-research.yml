@@ -1,0 +1,31 @@
+name: The New Frontier Research
+
+on:
+  push:
+    paths:
+      - 'quests/access/the-new-frontier/**'
+      - '.github/workflows/the-new-frontier-research.yml'
+  pull_request:
+    paths:
+      - 'quests/access/the-new-frontier/**'
+      - '.github/workflows/the-new-frontier-research.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate M2 safety gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate research package
+        run: python quests/access/the-new-frontier/validation/test_the_new_frontier_research.py

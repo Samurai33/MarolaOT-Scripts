@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "package": {
+    "name": "The New Frontier",
+    "slug": "the-new-frontier",
+    "type": "quest",
+    "status": "reference-audited",
+    "vocation": null,
+    "levelRange": "60+ recomendado; missão 9 exige dois jogadores level 70+"
+  },
+  "target": {
+    "client": "MarolaOT Client",
+    "bot": "vBot 4.8",
+    "platform": "Windows",
+    "server": "MarolaOT"
+  },
+  "maturity": "M2",
+  "sources": [
+    {
+      "name": "Tibia Wiki Brasil — The New Frontier Quest",
+      "url": "https://www.tibiawiki.com.br/wiki/The_New_Frontier_Quest",
+      "role": "documentation",
+      "commit": null,
+      "paths": [],
+      "license": "external-editorial-content",
+      "redistribution": "reference-only",
+      "notes": "Revisão publicada aprovada em 23 de junho de 2026. Usada para requisitos, ordem das dez missões, NPCs, itens, viagens e coordenadas editoriais; o texto do guia não é reproduzido integralmente."
+    },
+    {
+      "name": "OpenTibiaBR Canary",
+      "url": "https://github.com/opentibiabr/canary",
+      "role": "game-data",
+      "commit": "a879c9312e34381e8eedf397b8ed44510698b689",
+      "paths": [
+        "data-otservbr-global/lib/core/quests/catalog/043_the_new_frontier.lua",
+        "data-otservbr-global/scripts/quests/the_new_frontier/action_beaver.lua",
+        "data-otservbr-global/scripts/quests/the_new_frontier/creaturescripts_shard_of_corruption_kill.lua",
+        "data-otservbr-global/scripts/quests/the_new_frontier/action_arena.lua",
+        "data-otservbr-global/scripts/quests/the_new_frontier/action_prision_secret_door.lua"
+      ],
+      "license": "GPL-2.0",
+      "redistribution": "reference-only",
+      "notes": "Fonte primária para questline, mission IDs, storages simbólicos, árvores do beaver bait, Shard of Corruption, arena da missão 9 e saída da prisão. Nenhum código do Canary é copiado para o pacote."
+    }
+  ],
+  "components": {
+    "cavebot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Existe um dataset provisório de coordenadas editoriais em evidence/tibiawiki-coordinates.json, mas nenhuma coordenada pode virar waypoint antes da validação no MarolaOT."
+    },
+    "targetbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Configuração de combate será criada somente para trechos comuns; bosses e arenas permanecerão manuais."
+    },
+    "attackbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Não faz parte da auditoria M2."
+    },
+    "healbot": {
+      "status": "missing",
+      "path": null,
+      "notes": "Será definido apenas após teste local autorizado."
+    },
+    "supplies": {
+      "status": "missing",
+      "path": null,
+      "notes": "Itens, quantidades e IDs específicos do MarolaOT ainda precisam ser confirmados."
+    },
+    "refill": {
+      "status": "missing",
+      "path": null,
+      "notes": "A quest atravessa Farmine, Kazordoon, Edron, Port Hope, Thais, Venore e Zao; não haverá refill único antes da captura real."
+    },
+    "rollback": {
+      "status": "missing",
+      "path": null,
+      "notes": "Obrigatório quando o pacote receber arquivos executáveis ou instalador."
+    }
+  },
+  "changes": [
+    "A quest foi dividida em dez missões assistidas e checkpoints manuais.",
+    "A missão 5 foi subdividida por NPC para evitar diálogos e palavras de persuasão automáticos.",
+    "Bosses, arenas, prisão, uso de itens e etapas com outro jogador foram classificados como manuais.",
+    "As coordenadas textuais do TibiaWiki foram organizadas como referências provisórias.",
+    "Nenhum waypoint ou CaveBot foi gerado automaticamente a partir das coordenadas editoriais."
+  ],
+  "tests": [
+    {
+      "name": "source-audit",
+      "status": "passed",
+      "evidence": "source-lock.json"
+    },
+    {
+      "name": "ready-route-search",
+      "status": "passed",
+      "evidence": "Nenhum pacote público completo, reproduzível e licenciável foi localizado."
+    },
+    {
+      "name": "quest-safety-gate",
+      "status": "passed",
+      "evidence": "validation/test_the_new_frontier_research.py"
+    },
+    {
+      "name": "provisional-coordinate-structure-gate",
+      "status": "passed",
+      "evidence": "evidence/tibiawiki-coordinates.json"
+    },
+    {
+      "name": "coordinate-validation-in-marolaot",
+      "status": "pending",
+      "evidence": "Todos os pontos continuam com validationStatus pending-marolaot-validation."
+    }
+  ],
+  "safety": {
+    "backupRequired": true,
+    "rollbackRequired": true,
+    "modulesOffAfterInstall": true,
+    "secretsProhibited": true,
+    "manualCheckpoints": [
+      "Confirmar o estado da quest e do Quest Log antes de cada missão.",
+      "Validar no MarolaOT cada coordenada editorial antes de criar waypoint.",
+      "Usar manualmente o Flask with Beaver Bait nas três árvores.",
+      "Assumir manualmente o combate contra Shard of Corruption.",
+      "Executar manualmente os seis diálogos e palavras de persuasão da missão 5.",
+      "Entrar e sobreviver manualmente à arena do Mooh'Tah Master.",
+      "Executar manualmente a prisão, a nota escondida e a porta secreta.",
+      "Confirmar outro jogador level 70+ para a missão 9.",
+      "Executar manualmente a alavanca e todas as ondas de bosses da Isle of Strife.",
+      "Reportar manualmente cada missão aos NPCs antes de iniciar a próxima."
+    ]
+  }
+}
